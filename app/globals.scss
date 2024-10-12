@@ -31,3 +31,25 @@
   height: 100%;
   object-fit: cover;
 }
+
+.mySwiper .swiper-button-prev {
+  color: #bb9d7b;
+  left: 50%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  z-index: 10;
+}
+
+.mySwiper .swiper-button-next {
+  color: #bb9d7b;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  z-index: 10;
+}
+
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  width: 40px;
+  height: 40px;
+}
