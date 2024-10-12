@@ -4,14 +4,33 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
+import { FaAngleRight } from "react-icons/fa";
 
 const HomeSwiper = () => {
   return (
     <div className="relative w-full">
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+      <Swiper
+        navigation={true}
+        modules={[Navigation]}
+        className="mySwiper"
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+        }}
+      >
         <SwiperSlide>
-          <div className="flex h-[60rem] relative">
-            <div className="w-1/2 relative h-full">
+          <div className="flex gap-5 bg-black flex-col md:gap-0 md:flex-row h-[60rem] relative">
+            <div className="w-full md:w-1/2 group relative h-full">
               <Image
                 alt="slider image 1"
                 src="https://darkfashion.wpengine.com/wp-content/uploads/2023/10/slider-1-a.webp"
@@ -19,8 +38,20 @@ const HomeSwiper = () => {
                 objectFit="cover"
                 quality={100}
               />
+
+              <div className="flex flex-col mb-5 max-h-[12rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
+                <h2 className="text-white ">CASUAL JACKET</h2>
+                <h1 className="text-[4rem] text-white duration-500 group-hover:text-[#BB9D7B]  ">
+                  <span className="hover:text-white duration-300">
+                    For Women
+                  </span>
+                </h1>
+                <p className="flex items-center text-[14px] text-white absolute duration-500 bottom-[-5rem] group-hover:bottom-[2px]">
+                  DISCOVER <FaAngleRight />
+                </p>
+              </div>
             </div>
-            <div className="w-1/2 relative h-full">
+            <div className="w-full md:w-1/2 relative h-full">
               <Image
                 alt="slider image 2"
                 src="https://darkfashion.wpengine.com/wp-content/uploads/2023/10/slider-1-b.webp"
