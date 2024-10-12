@@ -1,5 +1,11 @@
 i {
-  color: white !important;
+  svg {
+    transition: stroke 0.3s ease;
+  }
+
+  &:hover svg {
+    stroke: #bb9d7b;
+  }
 }
 
 .open-bar-logo circle {
