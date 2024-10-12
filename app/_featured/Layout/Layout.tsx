@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const pathname = usePathname();
-  const noLayoutPages = ["/dashboard", "/", "/register"];
+  const noLayoutPages = ["/admin", "/register", "/admin/fashions"];
   const shouldShowLayout = !noLayoutPages.includes(pathname);
 
   const handleUserSideBar = () => {
@@ -39,12 +39,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         />
       </div>
       <div className="">
-        <Header
-          handleSidebar={handleSideBar}
-          handleUserSideBar={handleUserSideBar}
-        />
+        {shouldShowLayout && (
+          <Header
+            handleSidebar={handleSideBar}
+            handleUserSideBar={handleUserSideBar}
+          />
+        )}
+
         {children}
-        <Footer />
+
+        {shouldShowLayout && <Footer />}
       </div>
     </>
   );

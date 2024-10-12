@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,6 +8,7 @@ import { FaAngleRight } from "react-icons/fa";
 import SwiperNavigateLeft from "@/app/_assets/SwiperNavigateLeft";
 import SwiperNavigationRight from "@/app/_assets/SwiperNavigationRight";
 import { useRequest } from "@/app/_http/axiosFetcher";
+import { motion } from "framer-motion";
 
 const HomeSwiper = () => {
   const { data, isLoading, error } = useRequest("fashions", {
@@ -15,7 +16,15 @@ const HomeSwiper = () => {
     module: "fashionApi",
   });
 
-  console.log(data?.fashions);
+  const fadeUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
+
+  const fadeDown = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
 
   return (
     <div className="relative w-full">
@@ -44,12 +53,14 @@ const HomeSwiper = () => {
         {data &&
           data?.fashions.map((item: any, index: number) => {
             return (
-              <SwiperSlide className="cursor-grab">
-                <div
-                  key={index}
-                  className="flex gap-5 bg-black flex-col md:gap-0 md:flex-row h-[60rem] relative"
-                >
-                  <div className="w-full md:w-1/2 group relative h-full">
+              <SwiperSlide className="cursor-grab" key={index}>
+                <div className="flex gap-5 bg-black flex-col md:gap-0 md:flex-row h-[60rem] relative">
+                  <motion.div
+                    className="w-full md:w-1/2 group relative h-full"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeUp}
+                  >
                     <Image
                       alt="slider image 1"
                       src={`http://localhost:3001/${item?.fashionImage}`}
@@ -58,7 +69,7 @@ const HomeSwiper = () => {
                       quality={100}
                     />
 
-                    <div className="flex flex-col mb-5 max-h-[20rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
+                    <div className="flex flex-col mb-5 max-h-[20rem] overflow-hidden justify-center items-center w-full absolute bottom-0">
                       <h2 className="text-white ">{item?.fashionType}</h2>
                       <h1 className="text-[4rem] cursor-pointer text-white duration-500 group-hover:text-[#BB9D7B]  ">
                         <span className="hover:text-white duration-300">
@@ -69,8 +80,14 @@ const HomeSwiper = () => {
                         DISCOVER <FaAngleRight />
                       </p>
                     </div>
-                  </div>
-                  <div className="w-full md:w-1/2 group relative h-full">
+                  </motion.div>
+
+                  <motion.div
+                    className="w-full md:w-1/2 group relative h-full"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeDown}
+                  >
                     <Image
                       alt="slider image 2"
                       src={`http://localhost:3001/${item?.fashionImage2}`}
@@ -79,7 +96,7 @@ const HomeSwiper = () => {
                       quality={100}
                     />
 
-                    <div className="flex  flex-col mb-5 max-h-[20rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
+                    <div className="flex flex-col mb-5 max-h-[20rem] overflow-hidden justify-center items-center w-full absolute bottom-0">
                       <h2 className="text-white ">{item?.fashionType2}</h2>
                       <h1 className="text-[4rem] cursor-pointer text-white duration-500 group-hover:text-[#BB9D7B]  ">
                         <span className="hover:text-white duration-300">
@@ -90,7 +107,7 @@ const HomeSwiper = () => {
                         DISCOVER <FaAngleRight />
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
 
                   <div className="absolute left-[-8rem] top-[25rem] text-white">
                     <ul className="flex gap-8 rotate-[270deg]">
