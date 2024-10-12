@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+
 import {
   homeItems,
   shopItems,
@@ -43,6 +45,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       >
         {!activeMenu ? (
           <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-white">
+            <div className="flex  w-full items-end justify-end text-[25px]">
+              <IoMdClose className="cursor-pointer" onClick={onClose} />
+            </div>
             <div
               role="button"
               onClick={() => toggleMenu("home")}

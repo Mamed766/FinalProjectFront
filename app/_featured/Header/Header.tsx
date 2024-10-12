@@ -124,7 +124,7 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
 
             <div
               onClick={handleSidebar}
-              className="text-white header__xl text-[25px]"
+              className="text-white header__xl text-[25px] cursor-pointer"
             >
               <RxHamburgerMenu />
             </div>
