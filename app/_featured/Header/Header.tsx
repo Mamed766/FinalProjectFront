@@ -2,7 +2,12 @@ import AddToCartLogo from "@/app/_assets/AddToCartLogo";
 import OpenBarLogo from "@/app/_assets/OpenBarLogo";
 import SearchLogo from "@/app/_assets/SearchLogo";
 import Dropdown from "@/app/_components/Dropdown/Dropdown";
-import { homeItems, pageItems } from "@/app/_static/mockdb";
+import {
+  homeItems,
+  newsItems,
+  pageItems,
+  shopItems,
+} from "@/app/_static/mockdb";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -69,20 +74,22 @@ const Header = () => {
                 GALLERY
               </div>
             </li>
-            <li className={linkClass("/shop")}>
+            <li className={`${linkClass("/shop")} relative group`}>
               <div
                 onClick={() => handleNavigation("/shop")}
                 className="cursor-pointer"
               >
                 SHOP
+                <Dropdown items={shopItems} />
               </div>
             </li>
-            <li className={linkClass("/news")}>
+            <li className={`${linkClass("/news")} relative group`}>
               <div
                 onClick={() => handleNavigation("/news")}
                 className="cursor-pointer"
               >
                 NEWS
+                <Dropdown items={newsItems} />
               </div>
             </li>
             <li className={linkClass("/contact")}>
