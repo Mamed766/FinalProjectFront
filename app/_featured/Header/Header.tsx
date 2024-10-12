@@ -2,6 +2,7 @@ import AddToCartLogo from "@/app/_assets/AddToCartLogo";
 import OpenBarLogo from "@/app/_assets/OpenBarLogo";
 import SearchLogo from "@/app/_assets/SearchLogo";
 import Dropdown from "@/app/_components/Dropdown/Dropdown";
+import { RxHamburgerMenu } from "react-icons/rx";
 import {
   homeItems,
   newsItems,
@@ -11,8 +12,9 @@ import {
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import "./header.scss";
 
-const Header = () => {
+const Header = ({ handleUserSideBar }: any) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -38,7 +40,7 @@ const Header = () => {
             width={183}
           />
         </div>
-        <div>
+        <div className="header__mobile">
           <ul className="flex text-[14px] gap-7  mt-[15px]">
             <li className={`${linkClass("/")} relative group`}>
               <div
@@ -104,17 +106,24 @@ const Header = () => {
         </div>
         <div>
           <div className="flex items-center mt-2 gap-7">
-            <div className="mr-2 cursor-pointer">
+            <div className="mr-2 cursor-pointer header__mobile">
               <SearchLogo />
             </div>
-            <div className="cursor-pointer relative">
+            <div className="cursor-pointer relative header__mobile">
               <div className="w-5 h-5 rounded-full bg-[#BB9D7B] absolute right-[-10px] top-[-10px]  flex items-center  justify-center text-[10px] text-white">
                 0
               </div>
               <AddToCartLogo />
             </div>
-            <div className="pt-[0.5px] cursor-pointer">
+            <div
+              onClick={handleUserSideBar}
+              className="pt-[0.5px] cursor-pointer header__mobile"
+            >
               <OpenBarLogo />
+            </div>
+
+            <div className="text-white header__xl text-[25px]">
+              <RxHamburgerMenu />
             </div>
           </div>
         </div>
