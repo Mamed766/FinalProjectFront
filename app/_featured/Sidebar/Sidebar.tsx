@@ -55,16 +55,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </div>
             <div
               role="button"
-              onClick={() => toggleMenu("shop")}
-              className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
-            >
-              <div className="w-full py-3">Shop</div>
-              <div className="grid place-items-center mr-4">
-                <FaAngleRight />
-              </div>
-            </div>
-            <div
-              role="button"
               onClick={() => toggleMenu("pages")}
               className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
             >
@@ -75,6 +65,35 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </div>
             <div
               role="button"
+              className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <Link href={"/gift-card"} className="w-full py-3">
+                Gift Card
+              </Link>
+              <div className="grid place-items-center mr-4"></div>
+            </div>
+            <div
+              role="button"
+              className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <Link href={"/gallery"} className="w-full py-3">
+                Gallery
+              </Link>
+              <div className="grid place-items-center mr-4"></div>
+            </div>
+            <div
+              role="button"
+              onClick={() => toggleMenu("shop")}
+              className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <div className="w-full py-3">Shop</div>
+              <div className="grid place-items-center mr-4">
+                <FaAngleRight />
+              </div>
+            </div>
+
+            <div
+              role="button"
               onClick={() => toggleMenu("news")}
               className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
             >
@@ -82,6 +101,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <div className="grid place-items-center mr-4">
                 <FaAngleRight />
               </div>
+            </div>
+            <div
+              role="button"
+              className="flex items-center w-full p-3 rounded-lg text-start duration-700 hover:text-black leading-tight transition-all  hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80  focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <Link href={"/contact"} className="w-full py-3">
+                Contact
+              </Link>
+              <div className="grid place-items-center mr-4"></div>
             </div>
           </nav>
         ) : (
