@@ -14,7 +14,7 @@ import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import "./header.scss";
 
-const Header = ({ handleUserSideBar }: any) => {
+const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -122,7 +122,10 @@ const Header = ({ handleUserSideBar }: any) => {
               <OpenBarLogo />
             </div>
 
-            <div className="text-white header__xl text-[25px]">
+            <div
+              onClick={handleSidebar}
+              className="text-white header__xl text-[25px]"
+            >
               <RxHamburgerMenu />
             </div>
           </div>
