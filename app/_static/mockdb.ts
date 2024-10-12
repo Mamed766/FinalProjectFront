@@ -11,5 +11,20 @@ export const pageItems: DropdownItem[] = [
   { label: "ABOUT", link: "about" },
   { label: "FAQ", link: "faq" },
   { label: "TEAM", link: "team" },
-  { label: "HOME", link: "" },
+  { label: "LOGIN PAGE", link: "login" },
+  { label: "ORDER TRACKING", link: "track" },
+  { label: "404 PAGE", link: "notexist" },
+];
+
+export const shopItems: DropdownItem[] = [
+  { label: "SHOP LISTING", link: "shop" },
+  { label: "SHOP DETAIL", link: "shop" },
+  { label: "WISHLIST", link: "wishlist" },
+  { label: "CART", link: "cart" },
+  { label: "CHECKOUT", link: "cart" },
+];
+
+export const newsItems: DropdownItem[] = [
+  { label: "NEWS LISTING", link: "news" },
+  { label: "NEWS SINGLE", link: "news" },
 ];
