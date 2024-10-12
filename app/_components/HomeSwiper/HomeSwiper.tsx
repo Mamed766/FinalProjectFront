@@ -41,10 +41,10 @@ const HomeSwiper = () => {
           },
         }}
       >
-        <SwiperSlide className="cursor-grab">
-          {data &&
-            data?.fashions.map((item: any, index: number) => {
-              return (
+        {data &&
+          data?.fashions.map((item: any, index: number) => {
+            return (
+              <SwiperSlide className="cursor-grab">
                 <div
                   key={index}
                   className="flex gap-5 bg-black flex-col md:gap-0 md:flex-row h-[60rem] relative"
@@ -58,7 +58,7 @@ const HomeSwiper = () => {
                       quality={100}
                     />
 
-                    <div className="flex flex-col mb-5 max-h-[12rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
+                    <div className="flex flex-col mb-5 max-h-[20rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
                       <h2 className="text-white ">{item?.fashionType}</h2>
                       <h1 className="text-[4rem] cursor-pointer text-white duration-500 group-hover:text-[#BB9D7B]  ">
                         <span className="hover:text-white duration-300">
@@ -79,7 +79,7 @@ const HomeSwiper = () => {
                       quality={100}
                     />
 
-                    <div className="flex  flex-col mb-5 max-h-[12rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
+                    <div className="flex  flex-col mb-5 max-h-[20rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
                       <h2 className="text-white ">{item?.fashionType2}</h2>
                       <h1 className="text-[4rem] cursor-pointer text-white duration-500 group-hover:text-[#BB9D7B]  ">
                         <span className="hover:text-white duration-300">
@@ -92,7 +92,7 @@ const HomeSwiper = () => {
                     </div>
                   </div>
 
-                  <div className="absolute left-[-6rem] top-[25rem] text-white">
+                  <div className="absolute left-[-8rem] top-[25rem] text-white">
                     <ul className="flex gap-8 rotate-[270deg]">
                       <li className="hover:text-[#BB9D7B] duration-300">
                         Facebook
@@ -109,9 +109,9 @@ const HomeSwiper = () => {
                     </ul>
                   </div>
                 </div>
-              );
-            })}
-        </SwiperSlide>
+              </SwiperSlide>
+            );
+          })}
 
         <div className="custom-prev absolute duration-300 hover:border-[#BB9D7B]  z-20  w-[200px]  py-5 px-3  max-w-[60px] border  left-1/2 top-1/2 transform -translate-x-[110%] -translate-y-1/2 cursor-pointer border-white bg-transparent text-white p-3 rounded-full">
           <div>
