@@ -1,3 +1,5 @@
+import { IoMdCloseCircleOutline } from "react-icons/io";
+
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -11,9 +13,12 @@ const UserSidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-white">
+        <div className="flex w-full justify-end pt-2 pr-2 text-[50px] text-white items-end cursor-pointer hover:text-red-600 duration-300 ">
+          <IoMdCloseCircleOutline onClick={onClose} />
+        </div>
+        <div className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-white">
           <div>User</div>
-        </nav>
+        </div>
       </div>
       {isOpen && (
         <div
