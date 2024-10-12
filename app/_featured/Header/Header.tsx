@@ -1,5 +1,9 @@
+import AddToCartLogo from "@/app/_assets/AddToCartLogo";
+import OpenBarLogo from "@/app/_assets/OpenBarLogo";
+import SearchLogo from "@/app/_assets/SearchLogo";
 import Image from "next/image";
 import React from "react";
+import { CgMenuGridO } from "react-icons/cg";
 
 const Header = () => {
   return (
@@ -26,7 +30,17 @@ const Header = () => {
             <li>CONTACT</li>
           </ul>
         </div>
-        <div></div>
+        <div>
+          <div className="flex items-center mt-2 gap-7">
+            <div className="mr-2">
+              <SearchLogo />
+            </div>
+            <AddToCartLogo />
+            <div className="pt-[0.5px]">
+              <OpenBarLogo />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
