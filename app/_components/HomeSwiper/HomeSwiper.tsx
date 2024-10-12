@@ -5,12 +5,17 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import { FaAngleRight } from "react-icons/fa";
+import SwiperNavigateLeft from "@/app/_assets/SwiperNavigateLeft";
+import SwiperNavigationRight from "@/app/_assets/SwiperNavigationRight";
 
 const HomeSwiper = () => {
   return (
     <div className="relative w-full">
       <Swiper
-        navigation={true}
+        navigation={{
+          prevEl: ".custom-prev",
+          nextEl: ".custom-next",
+        }}
         modules={[Navigation]}
         className="mySwiper"
         breakpoints={{
@@ -28,7 +33,7 @@ const HomeSwiper = () => {
           },
         }}
       >
-        <SwiperSlide>
+        <SwiperSlide className="cursor-grab">
           <div className="flex gap-5 bg-black flex-col md:gap-0 md:flex-row h-[60rem] relative">
             <div className="w-full md:w-1/2 group relative h-full">
               <Image
@@ -41,17 +46,17 @@ const HomeSwiper = () => {
 
               <div className="flex flex-col mb-5 max-h-[12rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
                 <h2 className="text-white ">CASUAL JACKET</h2>
-                <h1 className="text-[4rem] text-white duration-500 group-hover:text-[#BB9D7B]  ">
+                <h1 className="text-[4rem] cursor-pointer text-white duration-500 group-hover:text-[#BB9D7B]  ">
                   <span className="hover:text-white duration-300">
                     For Women
                   </span>
                 </h1>
-                <p className="flex items-center text-[14px] text-white absolute duration-500 bottom-[-5rem] group-hover:bottom-[2px]">
+                <p className="flex hover:text-[#BB9D7B] cursor-pointer  items-center text-[14px] text-white absolute duration-500 bottom-[-5rem] group-hover:bottom-[2px]">
                   DISCOVER <FaAngleRight />
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-1/2 relative h-full">
+            <div className="w-full md:w-1/2 group relative h-full">
               <Image
                 alt="slider image 2"
                 src="https://darkfashion.wpengine.com/wp-content/uploads/2023/10/slider-1-b.webp"
@@ -59,6 +64,16 @@ const HomeSwiper = () => {
                 objectFit="cover"
                 quality={100}
               />
+
+              <div className="flex flex-col mb-5 max-h-[12rem] overflow-hidden   justify-center  items-center w-full absolute bottom-0">
+                <h2 className="text-white ">FORMAL BLAZERS</h2>
+                <h1 className="text-[4rem] cursor-pointer text-white duration-500 group-hover:text-[#BB9D7B]  ">
+                  <span className="hover:text-white duration-300">For Men</span>
+                </h1>
+                <p className="flex hover:text-[#BB9D7B] cursor-pointer  items-center text-[14px] text-white absolute duration-500 bottom-[-5rem] group-hover:bottom-[2px]">
+                  DISCOVER <FaAngleRight />
+                </p>
+              </div>
             </div>
 
             <div className="absolute left-[-6rem] top-[25rem] text-white">
@@ -72,13 +87,16 @@ const HomeSwiper = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <div className="custom-prev absolute duration-300 hover:border-[#BB9D7B]  z-20  w-[200px]  py-5 px-3  max-w-[60px] border  left-1/2 top-1/2 transform -translate-x-[110%] -translate-y-1/2 cursor-pointer border-white bg-transparent text-white p-3 rounded-full">
+          <div>
+            <SwiperNavigateLeft />
+          </div>
+        </div>
+        <div className="custom-next w-[200px] duration-300  hover:border-[#BB9D7B] py-5 px-3  max-w-[60px] z-20 absolute left-1/2 top-1/2 transform border-white  translate-x-[10%] -translate-y-1/2 cursor-pointer bg-transparent border text-white p-3 rounded-full ">
+          <div>
+            <SwiperNavigationRight />
+          </div>
+        </div>
       </Swiper>
     </div>
   );
