@@ -6,3 +6,10 @@ export const homeItems: DropdownItem[] = [
   { label: "HOME - JEWELLERY STORE", link: "/" },
   { label: "HOME - SPORTS WEAR", link: "/" },
 ];
+
+export const pageItems: DropdownItem[] = [
+  { label: "ABOUT", link: "about" },
+  { label: "FAQ", link: "faq" },
+  { label: "TEAM", link: "team" },
+  { label: "HOME", link: "" },
+];

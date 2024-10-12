@@ -11,8 +11,15 @@ export type DropdownProps = {
 };
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
-    <ul className="flex-col font-medium    shadow-xl  text-[14px] p-5 z-10 transform scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300 ease-in-out absolute w-[15rem] top-[49px] bg-[#BB9D7B] ">
+    <ul
+      onClick={handleClick}
+      className="flex-col font-medium    shadow-xl  text-[14px] p-5 z-10 transform scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300 ease-in-out absolute w-[15rem] top-[49px] bg-[#BB9D7B] "
+    >
       {items.map((item, index) => (
         <Link
           href={`/${item.link}`}
