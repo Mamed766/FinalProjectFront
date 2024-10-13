@@ -9,8 +9,11 @@ import SwiperNavigateLeft from "@/app/_assets/SwiperNavigateLeft";
 import SwiperNavigationRight from "@/app/_assets/SwiperNavigationRight";
 import { useRequest } from "@/app/_http/axiosFetcher";
 import { motion } from "framer-motion";
+import ReactCurvedText from "react-curved-text";
 
 const HomeSwiper = () => {
+  const text = "Scroll Down Scroll Down Scroll Down ";
+
   const { data, isLoading, error } = useRequest("fashions", {
     method: "GET",
     module: "fashionApi",
