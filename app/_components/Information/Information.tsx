@@ -31,7 +31,7 @@ const Information = () => {
         <div className="flex flex-col relative z-20 justify-center w-full md:w-1/2 lg:w-1/3 px-5">
           <div>
             <h2 className="text-white text-[14px]">COOL LOOK</h2>
-            <p className="text-white font-medium text-[30px] md:text-[50px] max-w-[500px]">
+            <p className="text-white font-medium text-[30px] md:text-[40px] max-w-[500px]">
               We comprehend your style needs and create wonderful clothing
             </p>
           </div>
