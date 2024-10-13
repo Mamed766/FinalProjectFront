@@ -98,7 +98,7 @@ const Information = () => {
             </div>
           </div>
 
-          <div className="relative z-20">
+          <div className="relative pt-16 z-20">
             <Image
               alt=""
               src={
