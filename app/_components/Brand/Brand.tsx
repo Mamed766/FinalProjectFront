@@ -82,7 +82,7 @@ const Brand: React.FC = () => {
           {cardData.map((item) => (
             <div
               key={item.id}
-              className="relative   border-gray-500  flex flex-col gap-5 max-w-[25rem] min-h-[25rem] justify-center px-5 bg-opacity-90 transition-all duration-500 group overflow-hidden"
+              className="relative   border-gray-500  flex flex-col gap-5 max-w-[22rem] min-h-[20rem] justify-center px-5 bg-opacity-90 transition-all duration-500 group overflow-hidden"
             >
               <div className="absolute top-0 left-0 h-0 group-hover:h-full border-l-[2px] border-[#BB9D7B] z-30 transition-all duration-500"></div>
               <div className="absolute top-0 right-0 h-0 group-hover:h-full border-r-[2px] border-[#BB9D7B] z-30 transition-all duration-500"></div>
@@ -98,7 +98,7 @@ const Brand: React.FC = () => {
               <h2 className="z-20 relative text-[32px]">{item?.title}</h2>
               <p className="z-20 relative text-[16px]">{item?.description}</p>
               <div className="flex justify-end items-end z-20 relative text-[#BB9D7B]">
-                <MdOutlineArrowOutward className="group-hover:rotate-[45deg] duration-300 cursor-pointer" />
+                <MdOutlineArrowOutward className="group-hover:rotate-[45deg] text-[22px] duration-300 cursor-pointer" />
               </div>
             </div>
           ))}
