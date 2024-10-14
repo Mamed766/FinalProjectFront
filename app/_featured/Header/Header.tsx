@@ -12,11 +12,21 @@ import {
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import { IoMdLogOut } from "react-icons/io";
+
 import "./header.scss";
+import { deleteCookie } from "cookies-next";
 
 const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const handleLogout = () => {
+    deleteCookie("token");
+
+    window.location.reload();
+    router.push("/");
+  };
 
   const linkClass = (path: string) =>
     pathname === path
@@ -120,6 +130,12 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
               className="pt-[0.5px] cursor-pointer header__mobile"
             >
               <OpenBarLogo />
+            </div>
+            <div>
+              <IoMdLogOut
+                onClick={handleLogout}
+                className="text-white pt-[0.5px] hover:text-red-600 duration-700  cursor-pointer  text-[27px] flex items-center"
+              />
             </div>
 
             <div
