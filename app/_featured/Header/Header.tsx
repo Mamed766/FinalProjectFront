@@ -28,7 +28,7 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   };
 
   return (
-    <div className="px-5 pb-5 pt-3 bg-black border-[1px] border-gray-600">
+    <div className="px-5 pb-5  pt-3 bg-black border-[1px]  border-gray-600 fixed z-30 w-full">
       <div className="bg-black flex items-center justify-between ">
         <div className="cursor-pointer">
           <Image

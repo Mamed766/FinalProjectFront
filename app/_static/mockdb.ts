@@ -12,6 +12,7 @@ export const pageItems: DropdownItem[] = [
   { label: "FAQ", link: "faq" },
   { label: "TEAM", link: "team" },
   { label: "LOGIN PAGE", link: "login" },
+  { label: "REGISTER PAGE", link: "register" },
   { label: "ORDER TRACKING", link: "track" },
   { label: "404 PAGE", link: "notexist" },
 ];

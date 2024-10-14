@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const pathname = usePathname();
-  const noLayoutPages = ["/admin", "/register", "/admin/fashions"];
+  const noLayoutPages = ["/admin", "/admin/fashions"];
   const shouldShowLayout = !noLayoutPages.includes(pathname);
 
   const handleUserSideBar = () => {
