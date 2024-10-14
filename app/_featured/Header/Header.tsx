@@ -24,14 +24,13 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const token = getCookie("token");
-
   useEffect(() => {
+    const token = getCookie("token");
     if (token) {
       const decoded: any = jwtDecode(token);
       setUsername(decoded.username);
     }
-  }, []);
+  }, [getCookie("token")]);
 
   const handleLogout = () => {
     deleteCookie("token");
@@ -153,7 +152,7 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
             >
               <OpenBarLogo />
             </div>
-            {isClient && token && (
+            {isClient && getCookie("token") && (
               <div>
                 <IoMdLogOut
                   onClick={handleLogout}
