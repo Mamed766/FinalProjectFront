@@ -1,3 +1,4 @@
+"use client";
 import AddToCartLogo from "@/app/_assets/AddToCartLogo";
 import OpenBarLogo from "@/app/_assets/OpenBarLogo";
 import SearchLogo from "@/app/_assets/SearchLogo";
@@ -11,15 +12,26 @@ import {
 } from "@/app/_static/mockdb";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
+import { jwtDecode } from "jwt-decode";
 
 import "./header.scss";
-import { deleteCookie } from "cookies-next";
-
+import { deleteCookie, getCookie } from "cookies-next";
 const Header = ({ handleUserSideBar, handleSidebar }: any) => {
+  const [username, setUsername] = useState("Guest");
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  const token = getCookie("token");
+
+  useEffect(() => {
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      setUsername(decoded.username);
+    }
+  }, []);
 
   const handleLogout = () => {
     deleteCookie("token");
@@ -36,6 +48,10 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   const handleNavigation = (path: string) => {
     router.push(path);
   };
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className="px-5 pb-5  pt-3 bg-black border-[1px]  border-gray-600 fixed z-30 w-full">
@@ -116,6 +132,12 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
         </div>
         <div>
           <div className="flex items-center mt-2 gap-7">
+            <div>
+              <h1 className="text-white pl-2 usernametext flex flex-wrap">
+                Welcome,
+                {username}!
+              </h1>
+            </div>
             <div className="mr-2 cursor-pointer header__mobile">
               <SearchLogo />
             </div>
@@ -131,13 +153,14 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
             >
               <OpenBarLogo />
             </div>
-            <div>
-              <IoMdLogOut
-                onClick={handleLogout}
-                className="text-white pt-[0.5px] hover:text-red-600 duration-700  cursor-pointer  text-[27px] flex items-center"
-              />
-            </div>
-
+            {isClient && token && (
+              <div>
+                <IoMdLogOut
+                  onClick={handleLogout}
+                  className="text-white pt-[0.5px] hover:text-red-600 duration-700  cursor-pointer  text-[27px] flex items-center"
+                />
+              </div>
+            )}
             <div
               onClick={handleSidebar}
               className="text-white header__xl text-[25px] cursor-pointer"

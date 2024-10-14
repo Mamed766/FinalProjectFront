@@ -30,7 +30,7 @@ const HomeSwiper = () => {
   };
 
   return (
-    <div className="relative w-full pt-20">
+    <div className="relative w-full pt-16">
       <Swiper
         navigation={{
           prevEl: ".custom-prev",
