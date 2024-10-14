@@ -13,8 +13,8 @@ const UpdateProfile = () => {
     username: "",
     password: "",
   });
-
   const [userId, setUserId] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const token = getCookie("token");
@@ -45,8 +45,14 @@ const UpdateProfile = () => {
       const decoded: any = jwtDecode(token);
       setUserId(decoded._id);
       window.location.reload();
+      setError("");
       console.log("Profile updated successfully:", response.data);
-    } catch (error) {
+    } catch (error: any) {
+      if (error.response && error.response.status === 400) {
+        setError("Incorrect password. Please try again.");
+      } else {
+        setError("An error occurred. Please try again.");
+      }
       console.error("Error updating profile:", error);
     }
   };
@@ -104,6 +110,10 @@ const UpdateProfile = () => {
                   className="peer block min-h-[auto] w-full border-black border-b-[1px] bg-transparent py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary"
                 />
               </div>
+
+              {error && (
+                <div className="text-red-500 text-center mb-4">{error}</div>
+              )}
 
               <div className="mb-12 pb-1 pt-1 text-center">
                 <button
