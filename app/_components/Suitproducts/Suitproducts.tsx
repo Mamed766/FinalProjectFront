@@ -2,8 +2,10 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import { useRequest } from "@/app/_http/axiosFetcher";
+import { useRouter } from "next/navigation";
 
 const Suitproducts = () => {
+  const router = useRouter();
   const { data, isLoading, error } = useRequest("suits", {
     method: "GET",
     module: "suitApi",
@@ -85,6 +87,14 @@ const Suitproducts = () => {
                   </div>
                 );
               })}
+          </div>
+          <div className="w-full flex justify-center items-center">
+            <button
+              onClick={() => router.push("/shop")}
+              className="text-white flex  bg-[#BB9D7B] border border-transparent hover:border-[#BB9D7B]  group-hover:bottom-[1rem] group-hover:opacity-100 hover:bg-transparent duration-700  py-2 px-5 mt-10"
+            >
+              View More
+            </button>
           </div>
         </div>
       </div>
