@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useRequest, useRequestMutation } from "@/app/_http/axiosFetcher";
 import PostFashionModal from "../_postFashionModal/PostFashionModal";
 import AdminHeader from "../AdminHeader";
-
+import { toast } from "react-toastify";
 const Page = () => {
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -42,6 +42,7 @@ const Page = () => {
       await deleteProject({
         dynamicValue: fashion._id,
       });
+      toast.error("succesfully deleted");
       mutate("fashions");
     } catch (error) {
       console.error("error", error);

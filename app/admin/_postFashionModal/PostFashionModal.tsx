@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { mutate } from "swr";
+import { toast } from "react-toastify";
 
 export default function PostFashionModal({
   onClose,
@@ -74,6 +75,12 @@ export default function PostFashionModal({
 
       if (!response.ok) {
         throw new Error("Something went wrong while uploading");
+      }
+
+      if (isEdit) {
+        toast.success("Successfully updated");
+      } else {
+        toast.success("Successfully uploaded");
       }
 
       const result = await response.json();

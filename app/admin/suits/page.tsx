@@ -8,6 +8,7 @@ import { useRequest, useRequestMutation } from "@/app/_http/axiosFetcher";
 
 import AdminHeader from "../AdminHeader";
 import PostSuitModal from "../_postSuitModal/PostSuitModal";
+import { toast } from "react-toastify";
 const Page = () => {
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -42,6 +43,7 @@ const Page = () => {
       await deleteProject({
         dynamicValue: suit._id,
       });
+      toast.error("Successfully deleted");
       mutate("suits");
     } catch (error) {
       console.error("error", error);

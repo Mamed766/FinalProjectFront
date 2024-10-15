@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { mutate } from "swr";
-
+import { toast } from "react-toastify";
 export default function PostSuitModal({
   onClose,
   isEdit = false,
@@ -87,6 +87,11 @@ export default function PostSuitModal({
       }
 
       const result = await response.json();
+      if (isEdit) {
+        toast.success("Successfully updated");
+      } else {
+        toast.success("Successfully uploaded");
+      }
       console.log("Successfully uploaded:", result);
       mutate("suits");
 
