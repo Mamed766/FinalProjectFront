@@ -25,12 +25,16 @@ const Suitproducts = () => {
     <div style={suitStyle} className="py-20 ">
       <div className="">
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
-        <div className=" relative z-20">
+        <div
+          data-aos-duration="3000"
+          data-aos="fade-up"
+          className=" relative z-20"
+        >
           <div className="flex flex-col gap-1 text-white justify-center items-center">
             <h2>RECENT PRODUCTS</h2>
             <h1 className="text-[50px]">Enduringly Stylish Materials</h1>
           </div>
-          <div className="flex pt-5 gap-5 flex-wrap justify-center">
+          <div className="flex  pt-5 gap-5 flex-wrap justify-center">
             {data &&
               data?.suits.map((item: any, index: number) => {
                 return (
