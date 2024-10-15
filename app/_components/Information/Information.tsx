@@ -17,8 +17,8 @@ const Information = () => {
 
       <div
         data-aos="flip-down"
-        data-aos-duration="4000"
-        className="flex flex-wrap z-20 relative justify-between"
+        data-aos-duration="6000"
+        className="flex overflow-hidden flex-wrap z-20 relative justify-between"
       >
         <div className="relative z-20 w-full md:w-1/2 lg:w-1/3">
           <Image

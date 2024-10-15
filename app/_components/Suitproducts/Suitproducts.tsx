@@ -24,7 +24,7 @@ const Suitproducts = () => {
   return (
     <div style={suitStyle} className="py-20 ">
       <div className="">
-        <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
+        <div className="absolute overflow-hidden top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
         <div
           data-aos-duration="3000"
           data-aos="fade-up"

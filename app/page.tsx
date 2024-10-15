@@ -10,7 +10,7 @@ import AOS from "aos";
 const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      AOS.init({ duration: 1000 });
+      AOS.init({ duration: 1000, offset: 200 });
     }, 500);
 
     return () => clearTimeout(timer);
