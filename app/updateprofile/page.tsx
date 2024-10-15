@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { getCookie, setCookie } from "cookies-next";
 import Breadcrump from "../_components/breadcrump/Breadcrump";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const UpdateProfile = () => {
   });
   const [userId, setUserId] = useState("");
   const [error, setError] = useState("");
+  const [disabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     const token = getCookie("token");
@@ -44,15 +46,29 @@ const UpdateProfile = () => {
 
       const decoded: any = jwtDecode(token);
       setUserId(decoded._id);
-      window.location.reload();
+
       setError("");
-      console.log("Profile updated successfully:", response.data);
+      toast.success("Profile updated successfully, wait a second!");
+      setIsDisabled(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      console.log(
+        "Profile updated successfully, wait a second!",
+        response.data
+      );
     } catch (error: any) {
       if (error.response && error.response.status === 400) {
         setError("Incorrect password. Please try again.");
+        toast.error("Incorrect password. Please try again.");
+        setIsDisabled(false);
       } else {
         setError("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
+        setIsDisabled(false);
       }
+      setIsDisabled(false);
+
       console.error("Error updating profile:", error);
     }
   };
@@ -117,8 +133,11 @@ const UpdateProfile = () => {
 
               <div className="mb-12 pb-1 pt-1 text-center">
                 <button
-                  className="mb-3 inline-block bg-[#BB9D7B] w-full hover:bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                  className={`mb-3 inline-block bg-[#BB9D7B] w-full hover:bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong ${
+                    disabled ? "cursor-not-allowed opacity-50" : ""
+                  }`}
                   type="submit"
+                  disabled={disabled}
                 >
                   Update Profile
                 </button>
