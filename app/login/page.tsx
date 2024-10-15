@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
@@ -26,7 +26,11 @@ const Login = () => {
       const { data: res } = await axios.post(url, data);
       setCookie("token", res.data, { maxAge: 60 * 60 * 24 });
       setIsDiabled(true);
-      window.location.href = "/";
+      toast.success("You are logged in successfully!");
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
     } catch (error: any) {
       if (
         error.response &&
@@ -34,6 +38,7 @@ const Login = () => {
         error.response.status <= 500
       ) {
         setIsDiabled(false);
+        toast.error(error.response.data.message);
         setError(error.response.data.message);
       }
     }
