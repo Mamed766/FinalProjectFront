@@ -1,6 +1,7 @@
 "use client";
 import { getCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
@@ -14,6 +15,7 @@ const UserSidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const [userFirstname, setUserFirstname] = useState("Guest");
   const [userLastname, setUserLastname] = useState("Guest");
   const [userEmail, setUserEmail] = useState("Guest");
+  const router = useRouter();
 
   const token = getCookie("token");
 
@@ -52,6 +54,15 @@ const UserSidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="flex gap-1">
             Username: <h2 className="text-[#BB9D7B]"> {username} </h2>
           </div>
+        </div>
+
+        <div className="w-full  flex justify-center items-center">
+          <button
+            onClick={() => router.push("/updateprofile")}
+            className="text-white flex  bg-[#BB9D7B] border border-transparent hover:border-[#BB9D7B]  group-hover:bottom-[1rem] group-hover:opacity-100 hover:bg-transparent duration-700  py-2 px-5 mt-10"
+          >
+            Update Profile
+          </button>
         </div>
       </div>
       {isOpen && (
