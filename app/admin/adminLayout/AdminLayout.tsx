@@ -9,7 +9,13 @@ interface LayoutProps {
 
 const AdminLayout: React.FC<LayoutProps> = ({ children }) => {
   const pathname = usePathname();
-  const noLayoutPages = ["/admin", "/", "/register", "/admin/fashions"];
+  const noLayoutPages = [
+    "/admin",
+    "/",
+    "/register",
+    "/admin/fashions",
+    "/admin/suits",
+  ];
   const shouldShowLayout = !noLayoutPages.includes(pathname);
 
   return (
