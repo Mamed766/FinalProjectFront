@@ -15,7 +15,11 @@ const Information = () => {
     <div className="relative" style={informationStyle}>
       <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-60 z-10 w-full h-full"></div>
 
-      <div className="flex flex-wrap relative justify-between">
+      <div
+        data-aos="flip-down"
+        data-aos-duration="4000"
+        className="flex flex-wrap z-20 relative justify-between"
+      >
         <div className="relative z-20 w-full md:w-1/2 lg:w-1/3">
           <Image
             alt=""

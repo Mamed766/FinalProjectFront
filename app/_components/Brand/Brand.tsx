@@ -67,7 +67,7 @@ const Brand: React.FC = () => {
   return (
     <div className="py-[10rem]" style={brandStyle}>
       <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
-      <div className="h-full z-20">
+      <div data-aos="fade-up" className="h-full relative  z-20">
         <div className="flex flex-col z-20 items-center text-white   gap-5">
           <div className="flex-shrink-0 z-20 min-w-[20px] min-h-[20px] max-w-[20px] max-h-[20px]">
             <Scissor />
