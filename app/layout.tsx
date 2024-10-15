@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.scss";
 import { Provider } from "./_provide/SwrProvider";
 import Layout from "./_featured/Layout/Layout";

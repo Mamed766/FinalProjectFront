@@ -6,7 +6,6 @@ import Information from "./_components/Information/Information";
 import Suitproducts from "./_components/Suitproducts/Suitproducts";
 import HomePhoto from "./_components/HomePhoto/HomePhoto";
 import AOS from "aos";
-
 const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {

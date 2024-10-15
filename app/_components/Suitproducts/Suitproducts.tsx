@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useRequest } from "@/app/_http/axiosFetcher";
 import { useRouter } from "next/navigation";
+import Loading from "@/app/loading";
 
 const Suitproducts = () => {
   const router = useRouter();
@@ -11,6 +12,10 @@ const Suitproducts = () => {
     module: "suitApi",
   });
   data && console.log(data);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const suitStyle: React.CSSProperties = {
     backgroundImage:

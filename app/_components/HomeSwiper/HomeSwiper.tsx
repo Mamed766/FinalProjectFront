@@ -10,6 +10,7 @@ import SwiperNavigationRight from "@/app/_assets/SwiperNavigationRight";
 import { useRequest } from "@/app/_http/axiosFetcher";
 import { motion } from "framer-motion";
 import ReactCurvedText from "react-curved-text";
+import Loading from "@/app/loading";
 
 const HomeSwiper = () => {
   const text = "Scroll Down Scroll Down Scroll Down ";
@@ -18,6 +19,10 @@ const HomeSwiper = () => {
     method: "GET",
     module: "fashionApi",
   });
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
