@@ -13,6 +13,7 @@ const Login = () => {
 
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [isDisabled, setIsDiabled] = useState(false);
 
   const handleChange = ({ currentTarget: input }: any) => {
     setData({ ...data, [input.name]: input.value });
@@ -24,6 +25,7 @@ const Login = () => {
       const url = "http://localhost:3001/api/v2/auth";
       const { data: res } = await axios.post(url, data);
       setCookie("token", res.data, { maxAge: 60 * 60 * 24 });
+      setIsDiabled(true);
       window.location.href = "/";
     } catch (error: any) {
       if (
@@ -31,6 +33,7 @@ const Login = () => {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
+        setIsDiabled(false);
         setError(error.response.data.message);
       }
     }
@@ -72,10 +75,13 @@ const Login = () => {
 
               <div className="mb-12 pb-1 pt-1 text-center">
                 <button
-                  className="mb-3 inline-block bg-[#BB9D7B] w-full hover:bg-black   px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                  className={`mb-3 inline-block bg-[#BB9D7B] w-full hover:bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong ${
+                    isDisabled ? "cursor-not-allowed opacity-50" : ""
+                  }`}
                   type="submit"
                   data-twe-ripple-init
                   data-twe-ripple-color="light"
+                  disabled={isDisabled}
                 >
                   Login
                 </button>

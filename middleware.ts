@@ -20,8 +20,8 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 
-  if (isPublicRoute && cookie && !req.nextUrl.pathname.startsWith("/home")) {
-    return NextResponse.redirect(new URL("/home", req.nextUrl));
+  if (isPublicRoute && cookie && !req.nextUrl.pathname.startsWith("/")) {
+    return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 
   return NextResponse.next();
