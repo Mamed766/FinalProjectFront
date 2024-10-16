@@ -8,6 +8,15 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Box,
+} from "@chakra-ui/react";
+import InterestingStar from "@/app/_assets/InterestingStar";
 
 const SuitProducts = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -130,7 +139,7 @@ const SuitProducts = () => {
   };
 
   return (
-    <div className="pt-20 ">
+    <div className="pt-16 ">
       <Breadcrump title="Shop" bread1="Top Wear" />
       <div className="bg-black">
         <div className="py-10 max-w-[1500px] mx-auto">
@@ -154,9 +163,9 @@ const SuitProducts = () => {
                 className="min-h-[50%] max-h-[80%] max-w-[100%] object-cover"
               />
             </div>
-            <div>
-              <div className="flex flex-col">
-                <h1 className="text-[50px] text-white">
+            <div className="sticky top-20  self-start ">
+              <div className="flex flex-col gap-2">
+                <h1 className="text-[50px] max-w-[400px] text-white">
                   {data && data.suit.title}
                 </h1>
                 <p className="text-white text-[20px]">
@@ -208,7 +217,7 @@ const SuitProducts = () => {
                         {selectedColor && selectedColor}{" "}
                       </span>
                     </h3>
-                    <div className="flex items-center border-[#BB9D7B]">
+                    <div className="flex flex-wrap items-center border-[#BB9D7B]">
                       {colors.map((color) => (
                         <div
                           key={color.name}
@@ -229,7 +238,7 @@ const SuitProducts = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-4 items-center">
+                  <div className="flex flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                       <button
                         className="border border-[#BB9D7B] px-5 py-2"
@@ -271,6 +280,212 @@ const SuitProducts = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="">
+                <Accordion allowToggle>
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          flex="1"
+                          textAlign="left"
+                          fontSize={{ base: "16px", md: "26px" }}
+                          color="white"
+                        >
+                          Specification
+                        </Box>
+                        <AccordionIcon boxSize={{ base: "20px", md: "26px" }} />{" "}
+                        {/* Mobilde icon da küçültüldü */}
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel
+                      pb={4}
+                      color="white"
+                      fontSize={{ base: "14px", md: "16px" }}
+                    >
+                      {" "}
+                      {/* Mobilde 14px */}
+                      <ul>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Vibrant blue hues. This unique ring features London
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          10 USA Blue Topaz stones
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          24k gold band
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Natural Gemstones
+                        </li>
+                      </ul>
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          flex="1"
+                          textAlign="left"
+                          fontSize={{ base: "16px", md: "26px" }}
+                          color="white"
+                        >
+                          Shipping Info
+                        </Box>
+                        <AccordionIcon boxSize={{ base: "20px", md: "26px" }} />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel
+                      pb={4}
+                      color="white"
+                      fontSize={{ base: "14px", md: "16px" }}
+                    >
+                      <ul>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Free shipping for orders $75.00 USD+
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          2-year warranty
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          30-day returns
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Sustainable practices
+                        </li>
+                      </ul>
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          flex="1"
+                          textAlign="left"
+                          fontSize={{ base: "16px", md: "26px" }}
+                          color="white"
+                        >
+                          Description
+                        </Box>
+                        <AccordionIcon boxSize={{ base: "20px", md: "26px" }} />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel
+                      pb={4}
+                      color="white"
+                      fontSize={{ base: "14px", md: "16px" }}
+                    >
+                      <ul>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Morbi id ligula scelerisque, auctor nisl quis,
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          2-year warranty
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          30-day returns
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Sustainable practices
+                        </li>
+                      </ul>
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          flex="1"
+                          textAlign="left"
+                          fontSize={{ base: "16px", md: "26px" }}
+                          color="white"
+                        >
+                          Additional Details
+                        </Box>
+                        <AccordionIcon boxSize={{ base: "20px", md: "26px" }} />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel
+                      pb={4}
+                      color="white"
+                      fontSize={{ base: "14px", md: "16px" }}
+                    >
+                      <ul>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Morbi id ligula scelerisque, auctor nisl quis,
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          2-year warranty
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          30-day returns
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Sustainable practices
+                        </li>
+                      </ul>
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          flex="1"
+                          textAlign="left"
+                          fontSize={{ base: "16px", md: "26px" }}
+                          color="white"
+                        >
+                          Product Certificate
+                        </Box>
+                        <AccordionIcon boxSize={{ base: "20px", md: "26px" }} />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel
+                      pb={4}
+                      color="white"
+                      fontSize={{ base: "14px", md: "16px" }}
+                    >
+                      <ul>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Morbi id ligula scelerisque, auctor nisl quis,
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          2-year warranty
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          30-day returns
+                        </li>
+                        <li className="flex items-center gap-1">
+                          <FaStar className="text-[#BB9D7B]" />
+                          Sustainable practices
+                        </li>
+                      </ul>
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
               </div>
             </div>
           </div>

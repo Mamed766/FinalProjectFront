@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import UserSidebar from "../Sidebar/UserSidebar";
 import Sidebar from "../Sidebar/Sidebar";
+import { ChakraProvider } from "@chakra-ui/react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -28,28 +29,30 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      <div className="z-50">
-        <Sidebar
-          isOpen={isSideBarOpen}
-          onClose={() => setIsSideBarOpen(false)}
-        />
-        <UserSidebar
-          isOpen={isUserSideBarOpen}
-          onClose={() => setUserIsSideBarOpen(false)}
-        />
-      </div>
-      <div className="">
-        {shouldShowLayout && (
-          <Header
-            handleSidebar={handleSideBar}
-            handleUserSideBar={handleUserSideBar}
+      <ChakraProvider>
+        <div className="z-50">
+          <Sidebar
+            isOpen={isSideBarOpen}
+            onClose={() => setIsSideBarOpen(false)}
           />
-        )}
+          <UserSidebar
+            isOpen={isUserSideBarOpen}
+            onClose={() => setUserIsSideBarOpen(false)}
+          />
+        </div>
+        <div className="">
+          {shouldShowLayout && (
+            <Header
+              handleSidebar={handleSideBar}
+              handleUserSideBar={handleUserSideBar}
+            />
+          )}
 
-        {children}
+          {children}
 
-        {shouldShowLayout && <Footer />}
-      </div>
+          {shouldShowLayout && <Footer />}
+        </div>
+      </ChakraProvider>
     </>
   );
 };
