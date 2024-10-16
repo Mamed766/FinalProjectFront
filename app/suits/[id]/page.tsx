@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SuitProducts = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -87,15 +88,10 @@ const SuitProducts = () => {
         }
       );
 
-      console.log("Gönderilen productId:", data?.collection?._id);
-      console.log("Gönderilen token:", token);
-      console.log("Gönderilen quantity:", 1);
-
-      console.log("Eklenen data:", response.data);
-      console.log("Veri:", data);
+      toast.success("item added to card");
     } catch (error: any) {
       console.error(
-        "Sepete eklerken hata oluştu:",
+        "Error to adding cart:",
         error.response?.data || error.message
       );
     }
@@ -140,7 +136,7 @@ const SuitProducts = () => {
   };
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 ">
       <Breadcrump title="Shop" bread1="Top Wear" />
       <div className="bg-black">
         <div className="py-10 max-w-[1500px] mx-auto">
