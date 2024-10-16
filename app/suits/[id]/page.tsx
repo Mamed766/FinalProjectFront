@@ -13,13 +13,6 @@ const SuitProducts = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
-  const [productDetails, setProductDetails] = useState({
-    selectedSize: null,
-    selectedColor: null,
-    quantity: 1,
-    stock: 0,
-  });
-
   const [stock, setStock] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -54,21 +47,15 @@ const SuitProducts = () => {
   }, [data]);
 
   const increaseQuantity = () => {
-    setProductDetails((prevState) => ({
-      ...prevState,
-      quantity:
-        prevState.quantity < prevState.stock
-          ? prevState.quantity + 1
-          : prevState.quantity,
-    }));
+    setQuantity((prevQuantity) =>
+      prevQuantity < stock ? prevQuantity + 1 : prevQuantity
+    );
   };
 
   const decreaseQuantity = () => {
-    setProductDetails((prevState) => ({
-      ...prevState,
-      quantity:
-        prevState.quantity > 1 ? prevState.quantity - 1 : prevState.quantity,
-    }));
+    setQuantity((prevQuantity) =>
+      prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
+    );
   };
 
   const handleAddToCart = async () => {
@@ -78,7 +65,7 @@ const SuitProducts = () => {
         "http://localhost:3001/api/v2/cart/add",
         {
           productId: data?.suit?._id,
-          quantity: 1,
+          quantity: quantity,
         },
         {
           headers: {
@@ -88,10 +75,12 @@ const SuitProducts = () => {
         }
       );
 
-      toast.success("item added to card");
+      setStock((prevStock) => prevStock - quantity);
+
+      toast.success("Ürün sepete eklendi");
     } catch (error: any) {
       console.error(
-        "Error to adding cart:",
+        "Sepete eklerken hata oluştu:",
         error.response?.data || error.message
       );
     }
