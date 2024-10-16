@@ -59,6 +59,11 @@ const SuitProducts = () => {
   };
 
   const handleAddToCart = async () => {
+    if (!selectedSize || !selectedColor) {
+      toast.error("Please choose color and size!");
+      return;
+    }
+
     try {
       const token = getCookie("token");
       const response = await axios.post(
@@ -77,10 +82,10 @@ const SuitProducts = () => {
 
       setStock((prevStock) => prevStock - quantity);
 
-      toast.success("Ürün sepete eklendi");
+      toast.success("Item added to cart");
     } catch (error: any) {
       console.error(
-        "Sepete eklerken hata oluştu:",
+        "Error occured when adding",
         error.response?.data || error.message
       );
     }
