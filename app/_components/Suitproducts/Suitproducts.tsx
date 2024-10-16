@@ -57,7 +57,10 @@ const Suitproducts = () => {
                       <span className="ease absolute right-0 top-0 h-0 w-0 border-r-2 border-[#BB9D7B] z-20 transition-all duration-700 group-hover:h-full"></span>
                       <span className="ease absolute bottom-0 right-0 h-0 w-0 border-b-2 border-[#BB9D7B] z-20 transition-all duration-700 group-hover:w-full"></span>
                       <span className="ease absolute bottom-0 left-0 h-0 w-0 border-l-2 border-[#BB9D7B] z-20 transition-all duration-700 group-hover:h-full"></span>
-                      <div className="relative max-h-[30rem] min-h-[30rem] h-full overflow-hidden cursor-pointer">
+                      <div
+                        onClick={() => router.push(`suits/${item._id}`)}
+                        className="relative max-h-[30rem] min-h-[30rem] h-full overflow-hidden cursor-pointer"
+                      >
                         <motion.div
                           initial={{ opacity: 1, scale: 1 }}
                           animate={{ opacity: 1, scale: 1 }}
@@ -97,7 +100,10 @@ const Suitproducts = () => {
                         </h3>
                         <p className="text-gray-500">${item?.price}.00</p>
                         <div className="w-full flex justify-center items-center">
-                          <button className="text-white bg-[#BB9D7B] border border-transparent hover:border-[#BB9D7B] absolute bottom-[-1rem] opacity-0  group-hover:bottom-[1rem] group-hover:opacity-100 hover:bg-transparent duration-700  py-2 px-5 mt-2">
+                          <button
+                            onClick={() => router.push(`suits/${item._id}`)}
+                            className="text-white bg-[#BB9D7B] border border-transparent hover:border-[#BB9D7B] absolute bottom-[-1rem] opacity-0  group-hover:bottom-[1rem] group-hover:opacity-100 hover:bg-transparent duration-700  py-2 px-5 mt-2"
+                          >
                             Select Options
                           </button>
                         </div>
