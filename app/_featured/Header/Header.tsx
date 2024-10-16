@@ -140,7 +140,10 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
             <div className="mr-2 cursor-pointer header__mobile">
               <SearchLogo />
             </div>
-            <div className="cursor-pointer relative header__mobile">
+            <div
+              onClick={() => router.push("/cart")}
+              className="cursor-pointer relative header__mobile"
+            >
               <div className="w-5 h-5 rounded-full bg-[#BB9D7B] absolute right-[-10px] top-[-10px]  flex items-center  justify-center text-[10px] text-white">
                 0
               </div>
