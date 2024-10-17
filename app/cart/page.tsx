@@ -21,7 +21,7 @@ const page = () => {
     const fetchCart = async () => {
       try {
         const token = getCookie("token");
-        console.log("Frontend'deki token:", token);
+        console.log("Frontend  token:", token);
 
         const response = await axios.get("http://localhost:3001/api/v2/cart", {
           headers: {
@@ -33,10 +33,7 @@ const page = () => {
         setCartItems(response.data.items ?? []);
         console.log("API Response CARD:", response.data);
       } catch (error: any) {
-        console.error(
-          "Sepet alınırken hata oluştu:",
-          error.response?.data || error.message
-        );
+        console.error("cart error:", error.response?.data || error.message);
       } finally {
         setLoading(false);
       }
@@ -63,7 +60,7 @@ const page = () => {
       );
     } catch (error: any) {
       console.error(
-        "Ürün silinirken hata oluştu:",
+        "Error when deleting item:",
         error.response?.data || error.message
       );
     }

@@ -113,6 +113,33 @@ const SuitProducts = () => {
     }
   };
 
+  const handleAddToWishlist = async () => {
+    try {
+      const token = getCookie("token");
+      const response = await axios.post(
+        "http://localhost:3001/api/v2/wishlist/add",
+        {
+          productId: data?.suit?._id,
+          quantity: quantity,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
+
+      toast.success("Item added to wishlist");
+    } catch (error: any) {
+      if (error.response && error.response.status === 400) {
+        toast.error("Item already in wishlist");
+      } else {
+        toast.error("An error occurred while adding to wishlist");
+      }
+    }
+  };
+
   useEffect(() => {
     const countdownDate = new Date("2024-12-31T23:59:59").getTime();
 
@@ -278,7 +305,10 @@ const SuitProducts = () => {
                     >
                       ADD TO CART
                     </button>
-                    <button className="px-6 py-2 bg-transparent duration-700 hover:border-[#BB9D7B] border border-[#] text-white">
+                    <button
+                      onClick={handleAddToWishlist}
+                      className="px-6 py-2 bg-transparent duration-700 hover:border-[#BB9D7B] border border-[#] text-white"
+                    >
                       ADD TO WISHLIST
                     </button>
                   </div>
