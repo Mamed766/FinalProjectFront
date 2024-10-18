@@ -33,7 +33,7 @@ const UserSidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0  z-40 flex flex-col bg-clip-border  bg-[#201D1B] text-gray-700 h-screen w-full max-w-[20rem]  shadow-xl shadow-blue-gray-900/5 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0  z-50 flex flex-col bg-clip-border  bg-[#201D1B] text-gray-700 h-screen w-full max-w-[20rem]  shadow-xl shadow-blue-gray-900/5 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -68,7 +68,7 @@ const UserSidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed top-0 z-30 h-full w-full bg-black/70"
+          className="fixed top-0 z-40 h-full w-full bg-black/70"
         ></div>
       )}
     </>
