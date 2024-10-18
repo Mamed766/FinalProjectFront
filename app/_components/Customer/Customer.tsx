@@ -13,7 +13,7 @@ interface Testimonial {
 }
 
 const Customer = () => {
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       id: 1,
       name: "Floriana Inga",
