@@ -6,6 +6,7 @@ import Information from "./_components/Information/Information";
 import Suitproducts from "./_components/Suitproducts/Suitproducts";
 import HomePhoto from "./_components/HomePhoto/HomePhoto";
 import AOS from "aos";
+import FlexSuits from "./_components/FlexSuits/FlexSuits";
 const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,6 +23,7 @@ const Home = () => {
       <Information />
       <Suitproducts />
       <HomePhoto />
+      <FlexSuits />
     </div>
   );
 };
