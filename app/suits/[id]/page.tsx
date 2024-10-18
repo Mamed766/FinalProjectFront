@@ -338,7 +338,6 @@ const SuitProducts = () => {
                           Specification
                         </Box>
                         <AccordionIcon boxSize={{ base: "20px", md: "26px" }} />{" "}
-                        {/* Mobilde icon da küçültüldü */}
                       </AccordionButton>
                     </h2>
                     <AccordionPanel
@@ -347,7 +346,6 @@ const SuitProducts = () => {
                       fontSize={{ base: "14px", md: "16px" }}
                     >
                       {" "}
-                      {/* Mobilde 14px */}
                       <ul>
                         <li className="flex items-center gap-1">
                           <FaStar className="text-[#BB9D7B]" />
