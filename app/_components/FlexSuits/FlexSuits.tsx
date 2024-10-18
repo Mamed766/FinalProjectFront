@@ -27,13 +27,9 @@ const FlexSuits = () => {
 
   return (
     <div style={suitStyle}>
-      <div className="max-w-[1500px] mx-auto">
-        <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
-
-        <div
-          style={suitStyle}
-          className="w-full  mx-auto py-20 flex gap-5 flex-col md:flex-row  px-4 md:px-0"
-        >
+      <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
+      <div data-aos="fade-up" className="max-w-[1500px] relative z-20 mx-auto">
+        <div className="w-full  mx-auto py-20 flex gap-5 flex-col md:flex-row  px-4 md:px-0">
           <div className="w-full relative z-20 md:w-3/5 max-h-[49rem] min-h-[30rem]">
             <div className="w-full h-auto">
               <Image
@@ -148,10 +144,7 @@ const FlexSuits = () => {
             </div>
           </div>
         </div>
-        <div
-          style={suitStyle}
-          className="w-full pb-5  mx-auto  flex flexwrapsuits     !flex-row-reverse gap-5  md:flex-row  px-4 md:px-0"
-        >
+        <div className="w-full pb-5  mx-auto  flex flexwrapsuits     !flex-row-reverse gap-5  md:flex-row  px-4 md:px-0">
           <div className="w-full relative z-20 md:w-3/5 max-h-[49rem] min-h-[30rem]">
             <div className="w-full relative h-auto">
               <Image
