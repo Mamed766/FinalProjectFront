@@ -43,7 +43,7 @@ const News = () => {
     <div className="pt-16 bg-black">
       <Breadcrump bread1="Home" title="News" />
       <div className="max-w-[1500px] mx-auto ">
-        <div className="py-20 flex flexwrapbar justify-between  justifybar gap-10 px-5 bg-black">
+        <div className="py-20 flex flexwrapbar flexjustifybar justify-between  justifybar gap-10 px-5 bg-black">
           <div className="flex newscenter flex-wrap sm:gap-20 md:gap-14 gap-20">
             {loading ? (
               <p>Loading...</p>
@@ -86,7 +86,7 @@ const News = () => {
             )}
           </div>
 
-          <div className="marginbar">
+          <div className="marginbar ">
             <ArticlesBar />
           </div>
         </div>
