@@ -9,4 +9,9 @@ export const api = {
     suits: "suits",
     dataWithId: "suits/{{id}}",
   },
+  newsApi: {
+    baseUrl: "http://localhost:3001/api/v2",
+    news: "news",
+    dataWithId: "news/{{id}}",
+  },
 };
