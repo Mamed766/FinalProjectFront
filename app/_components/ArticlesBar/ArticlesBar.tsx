@@ -87,9 +87,9 @@ const newsItems: NewsData[] = [
 
 const ArticlesBar = () => {
   return (
-    <div className="sticky top-10">
+    <div className="">
       {" "}
-      <div className="bg-[#23201E] sticky self-start top-10 max-w-[300px] py-10 px-10">
+      <div className="bg-[#23201E]  max-w-[300px] py-10 px-10">
         <div className="flex items-center gap-2 border-b-[1px] border-[#B18D73]">
           <input
             type="search"
