@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRequest } from "../_http/axiosFetcher";
 import { FaSearch } from "react-icons/fa";
 import ArticlesBar from "../_components/ArticlesBar/ArticlesBar";
+import "./news.scss";
 
 const News = () => {
   const { data, isLoading, error } = useRequest("news", {
@@ -18,12 +19,12 @@ const News = () => {
     <div className="pt-16 bg-black">
       <Breadcrump bread1="Home" title="News" />
       <div className="max-w-[1500px] mx-auto ">
-        <div className="py-20 flex   gap-10 px-5 bg-black">
-          <div className="flex flex-wrap sm:gap-20 md:gap-14  gap-20">
+        <div className="py-20 flex flexwrapbar flexjustifybar gap-10 px-5 bg-black">
+          <div className="flex newscenter flex-wrap sm:gap-20 md:gap-14  gap-20">
             {data &&
               data?.news.map((item: any, index: number) => {
                 return (
-                  <div className="relative cursor-pointer min-w-[30rem] group max-w-[30rem] max-h-[25rem] min-h-[25rem]  bg-black">
+                  <div className="relative  cursor-pointer min-w-[30rem] group max-w-[30rem] max-h-[25rem] min-h-[25rem]  bg-black">
                     <div className="relative group min-w-[30rem] max-w-[30rem] max-h-[22rem] min-h-[20rem] overflow-hidden">
                       <div className="max-w-[35rem]  overflow-hidden">
                         <Image
@@ -54,7 +55,10 @@ const News = () => {
                 );
               })}
           </div>
-          <ArticlesBar />
+
+          <div className="marginbar">
+            <ArticlesBar />
+          </div>
         </div>
       </div>
     </div>
