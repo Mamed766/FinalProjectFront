@@ -12,6 +12,9 @@ const AdminHeader = () => {
           <Link href={"/admin/suits"} className="text-white">
             Suits
           </Link>
+          <Link href={"/admin/news"} className="text-white">
+            News
+          </Link>
         </ul>
       </div>
     </div>
