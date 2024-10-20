@@ -180,7 +180,7 @@ const SuitProducts = () => {
 
   return (
     <div className="pt-16 ">
-      <Breadcrump title="Shop" bread1="Top Wear" />
+      <Breadcrump title="Shop" bread1="Home" />
       <div className="bg-black">
         <div className="py-10 max-w-[1500px] mx-auto">
           <div className="flex gap-20 flex-wrap ">

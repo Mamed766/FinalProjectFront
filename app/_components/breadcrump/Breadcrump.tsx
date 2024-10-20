@@ -1,6 +1,9 @@
+"use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Breadcrump = ({ title, bread1, bread2 }: any) => {
+  const router = useRouter();
   const breadStyle: React.CSSProperties = {
     backgroundImage:
       "url('https://darkfashion.wpengine.com/wp-content/uploads/2023/09/breadcrumb-image.jpg')",
@@ -17,7 +20,14 @@ const Breadcrump = ({ title, bread1, bread2 }: any) => {
         <h2 className="text-[40px] text-white font-medium">{title}</h2>
         <ul>
           <li className="text-[16px] text-white  ">
-            <span className="hover:text-[#BB9D7B] cursor-pointer duration-700">
+            <span
+              onClick={() =>
+                router.push(
+                  bread1.toLowerCase() === "home" ? "/" : bread1.toLowerCase()
+                )
+              }
+              className="hover:text-[#BB9D7B] cursor-pointer duration-700"
+            >
               {bread1}
             </span>{" "}
             / {title} {bread2 && `/ ${bread2}`}
