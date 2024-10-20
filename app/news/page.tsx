@@ -6,6 +6,7 @@ import axios from "axios";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import ArticlesBar from "../_components/ArticlesBar/ArticlesBar";
 import "./news.scss";
+import { useRouter } from "next/navigation";
 
 const News = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,6 +14,7 @@ const News = () => {
   const [paginationInfo, setPaginationInfo] = useState<any>(null);
   const limit = 1;
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const fetchNews = async (page: number) => {
     setLoading(true);
@@ -63,6 +65,7 @@ const News = () => {
                           width={1000}
                           quality={100}
                           objectFit="cover"
+                          onClick={() => router.push(`news/${item?._id}`)}
                           className="object-cover max-h-[16rem] min-h-[16rem] absolute scale-110 transition-transform duration-500 ease-in-out  group-hover:translate-x-[5%]"
                         />
                       </div>
