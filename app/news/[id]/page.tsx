@@ -42,6 +42,12 @@ const interestingData2: InterestingItem[] = [
 ];
 
 const page = () => {
+  const newsStyle: React.CSSProperties = {
+    backgroundImage:
+      "url('https://darkfashion.wpengine.com/wp-content/uploads/2023/10/blog-testimonial-background-image-2.jpg')",
+    position: "relative",
+  };
+
   const { id } = useParams();
 
   const { data, isLoading, error } = useRequest(
@@ -170,9 +176,23 @@ const page = () => {
                 </div>
               </div>
             </div>
+
+            <div style={newsStyle} className="py-16 mt-10">
+              <div className="absolute inset-0 bg-[#34312E] opacity-60"></div>
+              <div className="relative max-w-[800px] mx-auto flex flex-col z-20">
+                <h2 className="flex   text-white">
+                  Duis sit ametfaucibus porta.Quisque eget risus maximus erat
+                  porttitor tincidunt vitae ac nulla. Ut ut augue id ex vehicula
+                  fermentum quis sit amet felis.
+                </h2>
+                <ul className=" flex justify-end text-white list-disc">
+                  <li className="text-[18px]">Joe Smith</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <div>
+          <div className="sticky self-start top-20">
             <ArticlesBar />
           </div>
         </div>
