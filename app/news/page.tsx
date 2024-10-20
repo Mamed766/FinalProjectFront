@@ -7,12 +7,13 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import ArticlesBar from "../_components/ArticlesBar/ArticlesBar";
 import "./news.scss";
 import { useRouter } from "next/navigation";
+import Loading from "../loading";
 
 const News = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [newsData, setNewsData] = useState<any[]>([]);
   const [paginationInfo, setPaginationInfo] = useState<any>(null);
-  const limit = 1;
+  const limit = 8;
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -44,11 +45,11 @@ const News = () => {
   return (
     <div className="pt-16 bg-black">
       <Breadcrump bread1="Home" title="News" />
-      <div className="max-w-[1500px] mx-auto ">
+      <div className="max-w-[1440px] mx-auto ">
         <div className="py-20 flex flexwrapbar flexjustifybar justify-between  justifybar gap-10 px-5 bg-black">
-          <div className="flex newscenter flex-wrap sm:gap-20 md:gap-14 gap-20">
+          <div className="flex newscenter flex-wrap sm:gap-20 md:gap-16 gap-20">
             {loading ? (
-              <p>Loading...</p>
+              <Loading />
             ) : (
               newsData.map((item: any, index: number) => {
                 return (
@@ -70,7 +71,10 @@ const News = () => {
                         />
                       </div>
                     </div>
-                    <div className="absolute flex flex-col gap-2 justify-center w-[300px] min-h-[15rem] max-h-[15rem] group-hover:w-full group-hover:bg-[#23201E] group-hover:text-white bottom-[-3rem] right-0 py-10 px-10 bg-white transition-all duration-500 ease-in-out ">
+                    <div
+                      onClick={() => router.push(`news/${item?._id}`)}
+                      className="absolute flex flex-col gap-2 justify-center w-[300px] min-h-[15rem] max-h-[15rem] group-hover:w-full group-hover:bg-[#23201E] group-hover:text-white bottom-[-3rem] right-0 py-10 px-10 bg-white transition-all duration-500 ease-in-out "
+                    >
                       <h2 className="group-hover:text-[#BB9D7B] duration-700 ">
                         {item?.createAt.slice(0, 10)}
                       </h2>
@@ -89,7 +93,7 @@ const News = () => {
             )}
           </div>
 
-          <div className="marginbar ">
+          <div className="marginbar  sticky top-20 self-start">
             <ArticlesBar />
           </div>
         </div>

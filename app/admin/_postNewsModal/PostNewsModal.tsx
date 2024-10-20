@@ -28,14 +28,12 @@ export default function PostNewsModal({
   const initialValues = {
     image: news?.image || "",
     title: news?.title || "",
-    date: news?.date || "",
     desc1: news?.desc1 || "",
     desc2: news?.desc2 || "",
   };
 
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
-    date: Yup.string().required("Date is required"),
     desc1: Yup.string().required("Description 1 is required"),
     desc2: Yup.string().required("Description 2 is required"),
   });
@@ -45,7 +43,6 @@ export default function PostNewsModal({
   const handleSubmit = async (values: any) => {
     const formData = new FormData();
     formData.append("title", values.title);
-    formData.append("date", values.date);
     formData.append("desc1", values.desc1);
     formData.append("desc2", values.desc2);
 
@@ -108,20 +105,6 @@ export default function PostNewsModal({
               />
               <ErrorMessage
                 name="title"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
-
-            <div className="mb-2">
-              <Field
-                type="text"
-                name="date"
-                placeholder="Date"
-                className="border p-2 rounded w-full"
-              />
-              <ErrorMessage
-                name="date"
                 component="div"
                 className="text-red-500 text-sm"
               />

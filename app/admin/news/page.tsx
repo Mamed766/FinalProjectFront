@@ -107,7 +107,6 @@ const Page = () => {
                         />
                       </th>
                       <td className="px-6 py-4">{news?.title}</td>
-                      <td className="px-6 py-4"> {news?.date} </td>
                       <td className="px-6 py-4"> {news?.desc1} </td>
                       <td className="px-6 py-4"> {news?.desc2} </td>
                       <td className="flex gap-2 py-4">

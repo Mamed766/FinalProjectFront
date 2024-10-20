@@ -89,7 +89,7 @@ const ArticlesBar = () => {
   return (
     <div className="">
       {" "}
-      <div className="bg-[#23201E]  max-w-[300px] py-10 px-10">
+      <div className="bg-[#23201E]  max-w-[330px] py-10 px-14">
         <div className="flex justify-between items-center gap-2 border-b-[1px] border-[#B18D73]">
           <input
             type="search"
@@ -143,7 +143,7 @@ const ArticlesBar = () => {
           <h2>Instagram :</h2>
           <div className="flex flex-wrap gap-2">
             {images.map((image, index) => (
-              <div key={index} className="max-w-[100px] min-w-[100px]">
+              <div key={index} className="max-w-[80px] min-w-[80px]">
                 <Image alt="" src={image.src} width={100} height={100} />
               </div>
             ))}
