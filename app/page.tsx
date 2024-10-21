@@ -9,6 +9,7 @@ import AOS from "aos";
 import FlexSuits from "./_components/FlexSuits/FlexSuits";
 import Customer from "./_components/Customer/Customer";
 import Recent from "./_components/Recent/Recent";
+import ServicesHome from "./_components/ServicesHome/ServicesHome";
 const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,6 +29,7 @@ const Home = () => {
       <FlexSuits />
       <Customer />
       <Recent />
+      <ServicesHome />
     </div>
   );
 };
