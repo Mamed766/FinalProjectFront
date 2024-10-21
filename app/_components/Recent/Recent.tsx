@@ -39,9 +39,9 @@ const Recent = () => {
               return (
                 <div
                   key={index}
-                  className="relative  cursor-pointer min-w-[25rem] group max-w-[25rem] max-h-[25rem] min-h-[25rem]  bg-transparent"
+                  className="relative  cursor-pointer min-w-[26rem] group max-w-[26rem] max-h-[25rem] min-h-[25rem]  bg-transparent"
                 >
-                  <div className="relative group min-w-[25rem] max-w-[25rem] max-h-[22rem] min-h-[20rem] overflow-hidden">
+                  <div className="relative group min-w-[26rem] max-w-[26rem] max-h-[22rem] min-h-[20rem] overflow-hidden">
                     <div className="max-w-[35rem]  overflow-hidden">
                       <Image
                         alt="News Image"
