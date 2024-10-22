@@ -21,7 +21,7 @@ const Footer = () => {
 
   return (
     <footer style={footerStyle} className="bg-black text-white py-20">
-      <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="max-w-[1440px] mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
         <div className="flex   flex-col gap-5">
           <img
             src="https://darkfashion.wpengine.com/wp-content/uploads/2023/09/Light-logo.svg"
@@ -171,7 +171,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="container pt-10 mx-auto">
+      <div className="max-w-[1440px] pt-10 mx-auto">
         <hr className="border-gray-500" />
         <div className="flex gap-2 flex-wrap justify-center md:justify-between pt-5">
           <div>© 2023 dark fashion, All Rights Reserved</div>
