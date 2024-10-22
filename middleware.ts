@@ -1,27 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
 
-const protectedRoutes = [
-  "/admin",
-  "/admin/fashions",
-  "/updateprofile",
-  "/admin/suits",
-  "/admin/news",
-];
-const publicRoutes = ["/login", "/register"];
+export default function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
 
-export default async function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.includes(path);
-  const isPublicRoute = publicRoutes.includes(path);
+  const token = req.cookies.get("token")?.value;
 
-  const cookie = cookies().get("token")?.value;
+  const isProtectedRoute =
+    pathname.startsWith("/admin") || pathname === "/updateprofile";
 
-  if (isProtectedRoute && cookie === undefined) {
-    return NextResponse.redirect(new URL("/", req.nextUrl));
+  const isPublicRoute = pathname === "/login" || pathname === "/register";
+
+  if (!token && isProtectedRoute) {
+    return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
 
-  if (isPublicRoute && cookie && !req.nextUrl.pathname.startsWith("/")) {
+  if (token && isPublicRoute) {
     return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 
@@ -29,5 +22,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  matcher: ["/admin/:path*", "/updateprofile", "/login", "/register"],
 };
