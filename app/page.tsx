@@ -10,6 +10,7 @@ import FlexSuits from "./_components/FlexSuits/FlexSuits";
 import Customer from "./_components/Customer/Customer";
 import Recent from "./_components/Recent/Recent";
 import ServicesHome from "./_components/ServicesHome/ServicesHome";
+import HomeImages from "./_components/HomeImages/HomeImages";
 const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,6 +31,7 @@ const Home = () => {
       <Customer />
       <Recent />
       <ServicesHome />
+      <HomeImages />
     </div>
   );
 };
