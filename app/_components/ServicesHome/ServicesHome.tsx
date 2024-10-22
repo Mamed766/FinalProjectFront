@@ -42,7 +42,10 @@ const ServicesHome = () => {
   return (
     <div className="bg-black py-20">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-wrap justify-center md:justify-between items-center gap-10">
+        <div
+          data-aos="fade-up"
+          className="flex flex-wrap justify-center md:justify-between items-center gap-10"
+        >
           {shippingData.map((item, index) => (
             <React.Fragment key={item.id}>
               <div className="flex items-center gap-3">

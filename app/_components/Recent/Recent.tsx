@@ -25,7 +25,10 @@ const Recent = () => {
     <div className="py-[10rem]" style={blogsStyle}>
       <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-60 z-10 w-full h-full"></div>
 
-      <div className="flex relative z-20 text-white justify-center items-center flex-col gap-2">
+      <div
+        data-aos="fade-right"
+        className="flex relative z-20 text-white justify-center items-center flex-col gap-2"
+      >
         <h2 className="text-[14px]">RECENT BLOGS</h2>
         <h1 className="text-[50px] font-medium">News & Blogs</h1>
       </div>

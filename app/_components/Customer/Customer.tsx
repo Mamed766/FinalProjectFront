@@ -60,7 +60,7 @@ const Customer = () => {
   return (
     <div className=" bg-black ">
       <div className="w-full max-w-[1540px] mx-auto  py-20 flex flex-col md:flex-row gap-8 items-start justify-between px-4 md:px-0">
-        <div className="w-full pl-2 text-white md:w-1/3">
+        <div data-aos="fade-right" className="w-full pl-2 text-white md:w-1/3">
           <h2 className="text-[14px] font-semibold mb-2">Review & Ratings</h2>
           <h1 className="text-[40px] max-w-[400px] font-bold mb-4">
             Positive Customers Feedback
@@ -72,7 +72,7 @@ const Customer = () => {
           </p>
         </div>
 
-        <div className="w-full md:w-2/3">
+        <div data-aos="flip-down" className="w-full md:w-2/3">
           <Swiper
             slidesPerView={2}
             spaceBetween={30}
