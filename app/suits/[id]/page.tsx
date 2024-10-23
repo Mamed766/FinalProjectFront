@@ -26,12 +26,12 @@ const SuitProducts = () => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [stock, setStock] = useState<number>(0);
-  // const [timeLeft, setTimeLeft] = useState({
-  //   days: 0,
-  //   hours: 0,
-  //   minutes: 0,
-  //   seconds: 0,
-  // });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   const router = useRouter();
 
@@ -141,29 +141,29 @@ const SuitProducts = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const countdownDate = new Date("2024-12-31T23:59:59").getTime();
+  useEffect(() => {
+    const countdownDate = new Date("2024-12-31T23:59:59").getTime();
 
-  //   const interval = setInterval(() => {
-  //     const now = new Date().getTime();
-  //     const distance = countdownDate - now;
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
 
-  //     if (distance > 0) {
-  //       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  //       const hours = Math.floor(
-  //         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  //       );
-  //       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  //       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  //       // setTimeLeft({ days, hours, minutes, seconds });
-  //     } else {
-  //       clearInterval(interval);
-  //     }
-  //   }, 1000);
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   const renderStars = (rating: number) => {
     return (
@@ -317,12 +317,12 @@ const SuitProducts = () => {
 
                     <div className="mt-6">
                       <p className="mb-2">Hurry up! Deals end up:</p>
-                      {/* <div className="flex gap-3">
+                      <div className="flex gap-3">
                         <div className="border border-[#BB9D7B] p-2">{`${timeLeft.days} Days`}</div>
                         <div className="border border-[#BB9D7B] p-2">{`${timeLeft.hours} Hrs`}</div>
                         <div className="border border-[#BB9D7B] p-2">{`${timeLeft.minutes} Mins`}</div>
                         <div className="border border-[#BB9D7B] p-2">{`${timeLeft.seconds} Secs`}</div>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -623,8 +623,10 @@ const SuitProducts = () => {
           </div>
         </div>
       </div>
-      <div className="bg-black pb-20">
-        <ReviewForm />
+      <div className="bg-black px-5 md:px-2 pb-20">
+        <div className="max-w-[1500px] mx-auto">
+          <ReviewForm />
+        </div>
       </div>
     </>
   );

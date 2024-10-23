@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { jwtDecode } from "jwt-decode";
 import { useRequest } from "@/app/_http/axiosFetcher";
 import { mutate } from "swr";
+import { toast } from "react-toastify";
 
 const ReviewSchema = Yup.object().shape({
   review: Yup.string().required("Review is required"),
@@ -60,16 +61,18 @@ const ReviewForm = () => {
 
       const result = await response.json();
       mutate("comments");
+      toast.success("Comment Added successfully");
       actions.resetForm();
       setRating(0);
       console.log("Review submitted:", result);
     } catch (error) {
+      toast.error("Error adding comment");
       console.error("Error submitting review:", error);
     }
   };
 
   return (
-    <div className="bg-black text-white px-20 space-y-6">
+    <div className="bg-black text-white  space-y-6">
       <div className="flex gap-2">
         <h2
           className={`cursor-pointer  ${
