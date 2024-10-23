@@ -111,6 +111,7 @@ const SuitProducts = () => {
         "Error occured when adding",
         error.response?.data || error.message
       );
+      toast.error(error.response?.data || error.message);
     }
   };
 
