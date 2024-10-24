@@ -129,9 +129,9 @@ const Shop = () => {
       <div>
         <Breadcrump bread1="Home" title="Shop" />
       </div>
-      <div className="bg-black">
+      <div className="bg-black px-10">
         <div className="max-w-[1500px] mx-auto py-10">
-          <div className="w-full flex justify-between items-center text-white mb-4">
+          <div className="w-full flex flex-wrap justify-between items-center text-white mb-5">
             <Text>
               Showing {filteredData.length} of {paginationInfo.totalCollections}{" "}
               items
@@ -140,6 +140,9 @@ const Shop = () => {
               width="200px"
               placeholder="Sort by Price"
               onChange={handleSortChange}
+              border="-moz-initial"
+              className="border-b-[1px] "
+              outline="none"
               value={sortOrder}
             >
               <option className="text-black" value="asc">
