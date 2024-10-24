@@ -126,10 +126,14 @@ const Shop = () => {
   useEffect(() => {
     if (shouldFetch) {
       fetchFilteredData();
-      setCurrentPage(1);
       setShouldFetch(false);
     }
   }, [shouldFetch, price, colorFilter, searchQuery, currentPage, sortOrder]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setShouldFetch(true);
+  }, [searchQuery, price, colorFilter]);
 
   return (
     <div className="pt-16">
