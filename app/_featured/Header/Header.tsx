@@ -83,6 +83,7 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
     if (e.key === "Enter") {
       handleSearch();
       setSearchQuery("");
+      e.preventDefault();
     }
   };
 

@@ -108,7 +108,7 @@ const Shop = () => {
   };
 
   useEffect(() => {
-    if (initialFetch) {
+    if (initialFetch && searchQuery !== "") {
       fetchFilteredData();
       setInitialFetch(false);
     }
