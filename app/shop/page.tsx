@@ -65,11 +65,13 @@ const Shop = () => {
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
+    setShouldFetch(true);
   };
 
   useEffect(() => {
     const search = searchParams.get("search") || "";
     setSearchQuery(search);
+    setShouldFetch(true);
   }, [searchParams]);
 
   const fetchFilteredData = async () => {
@@ -97,7 +99,8 @@ const Shop = () => {
       }
 
       console.log(response.data);
-      setFilteredData(response.data.suits);
+      // setFilteredData(response.data.suits);
+      setFilteredData(data);
       setPaginationInfo(response.data.pagination);
     } catch (error) {
       console.error("Error fetching filtered data:", error);
@@ -123,6 +126,7 @@ const Shop = () => {
   useEffect(() => {
     if (shouldFetch) {
       fetchFilteredData();
+      setShouldFetch(false);
     }
   }, [shouldFetch, price, colorFilter, searchQuery, currentPage, sortOrder]);
 
