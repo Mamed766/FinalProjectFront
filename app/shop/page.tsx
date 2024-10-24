@@ -25,6 +25,8 @@ interface Suit {
   price: number;
   color: string;
   size: string | number;
+  image1: any;
+  image2: any;
   _id: any;
 }
 const Shop = () => {
