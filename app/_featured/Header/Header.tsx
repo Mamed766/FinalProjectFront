@@ -212,7 +212,7 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
 
       <div className="bg-black">
         <Modal isOpen={isModalOpen} onClose={handleModalClose} isCentered>
-          <ModalOverlay />
+          <ModalOverlay bg="black" />
           <ModalContent bg="black" p={10}>
             <Box>
               <Input
