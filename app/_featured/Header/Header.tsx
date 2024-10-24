@@ -15,14 +15,24 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
 import { jwtDecode } from "jwt-decode";
+import {
+  Box,
+  Input,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  Button,
+} from "@chakra-ui/react";
 
 import "./header.scss";
 import { deleteCookie, getCookie } from "cookies-next";
 const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   const [username, setUsername] = useState("Guest");
   const [isClient, setIsClient] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const token = getCookie("token");
@@ -51,6 +61,29 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const handleSearchClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSearch = () => {
+    router.push(`/shop?search=${encodeURIComponent(searchQuery)}`);
+    setIsModalOpen(false);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <div className="px-5 pb-5  pt-3 bg-black border-[1px]  border-gray-600 fixed z-30 w-full">
@@ -137,7 +170,10 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
                 {username}!
               </h1>
             </div>
-            <div className="mr-2 cursor-pointer header__mobile">
+            <div
+              onClick={handleSearchClick}
+              className="mr-2 cursor-pointer header__mobile"
+            >
               <SearchLogo />
             </div>
             <div
@@ -171,6 +207,27 @@ const Header = ({ handleUserSideBar, handleSidebar }: any) => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="bg-black">
+        <Modal isOpen={isModalOpen} onClose={handleModalClose} isCentered>
+          <ModalOverlay />
+          <ModalContent bg="black" p={10}>
+            <Box>
+              <Input
+                placeholder="Search..."
+                variant="unstyled"
+                borderBottom="2px solid #BB9D7B"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
+                _focus={{ boxShadow: "none" }}
+                value={searchQuery}
+                onChange={handleSearchChange}
+                onKeyDown={handleKeyDown}
+              />
+            </Box>
+          </ModalContent>
+        </Modal>
       </div>
     </div>
   );
