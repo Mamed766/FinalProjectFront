@@ -12,6 +12,7 @@ import {
   Text,
   List,
   ListItem,
+  Select,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -44,6 +45,7 @@ const Shop = () => {
 
   const [initialFetch, setInitialFetch] = useState<boolean>(true);
   const [shouldFetch, setShouldFetch] = useState<boolean>(false);
+  const [sortOrder, setSortOrder] = useState<string>("asc");
 
   const handleSliderChange = (value: [number, number]) => {
     setPrice(value);
@@ -80,8 +82,18 @@ const Shop = () => {
           page: currentPage,
           limit: itemsPerPage,
           search: searchQuery,
+          sort: sortOrder,
         },
       });
+
+      let data = response.data.suits;
+
+      if (sortOrder === "asc") {
+        data = data.sort((a: Suit, b: Suit) => a.price - b.price);
+      } else if (sortOrder === "desc") {
+        data = data.sort((a: Suit, b: Suit) => b.price - a.price);
+      }
+
       console.log(response.data);
       setFilteredData(response.data.suits);
       setPaginationInfo(response.data.pagination);
@@ -101,11 +113,16 @@ const Shop = () => {
     setShouldFetch(true);
   };
 
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortOrder(e.target.value);
+    setShouldFetch(true);
+  };
+
   useEffect(() => {
     if (shouldFetch) {
       fetchFilteredData();
     }
-  }, [shouldFetch, price, colorFilter, searchQuery, currentPage]);
+  }, [shouldFetch, price, colorFilter, searchQuery, currentPage, sortOrder]);
 
   return (
     <div className="pt-16">
@@ -113,7 +130,28 @@ const Shop = () => {
         <Breadcrump bread1="Home" title="Shop" />
       </div>
       <div className="bg-black">
-        <div className="max-w-[1500px] flex justify-center md:justify-normal  flex-wrap md:flex-nowrap  gap-5 mx-auto py-20">
+        <div className="max-w-[1500px] mx-auto py-10">
+          <div className="w-full flex justify-between items-center text-white mb-4">
+            <Text>
+              Showing {filteredData.length} of {paginationInfo.totalCollections}{" "}
+              items
+            </Text>
+            <Select
+              width="200px"
+              placeholder="Sort by Price"
+              onChange={handleSortChange}
+              value={sortOrder}
+            >
+              <option className="text-black" value="asc">
+                Price: Low to High
+              </option>
+              <option className="text-black" value="desc">
+                Price: High to Low
+              </option>
+            </Select>
+          </div>
+        </div>
+        <div className="max-w-[1500px] flex justify-center md:justify-normal  flex-wrap md:flex-nowrap  gap-5 mx-auto pb-20">
           <div>
             <Box bg="#23201E" height="50rem" color="white" p={10} w="300px">
               <Heading size="md" mb={4}>
