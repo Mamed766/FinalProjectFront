@@ -126,6 +126,7 @@ const Shop = () => {
   useEffect(() => {
     if (shouldFetch) {
       fetchFilteredData();
+      setCurrentPage(1);
       setShouldFetch(false);
     }
   }, [shouldFetch, price, colorFilter, searchQuery, currentPage, sortOrder]);
