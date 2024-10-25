@@ -55,8 +55,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setIsSideBarOpen((prev) => !prev);
   };
 
-  const a = 0;
-
   return (
     <>
       <ChakraProvider>
