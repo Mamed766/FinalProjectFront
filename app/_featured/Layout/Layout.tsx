@@ -16,8 +16,35 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const pathname = usePathname();
-  const noLayoutPages = ["/admin", "/admin/fashions", "/admin/suits"];
-  const shouldShowLayout = !noLayoutPages.includes(pathname);
+  const validRoutes = [
+    "/",
+    "/about",
+    "/faq",
+    "/team",
+    "/updateprofile",
+    "/track",
+    "/products",
+    "/login",
+    "/register",
+    "/gallery",
+    "/shop",
+    "/suits",
+    "/suits/:id",
+    "/cart",
+    "/news",
+  ];
+
+  // const noLayoutPages = [
+  //   "/admin",
+  //   "/admin/fashions",
+  //   "/admin/suits",
+  //   "/not-found",
+  // ];
+
+  const isSuitRouteWithId =
+    pathname.startsWith("/suits/") && pathname.split("/").length === 3;
+
+  const shouldShowLayout = validRoutes.includes(pathname) || isSuitRouteWithId;
 
   const handleUserSideBar = () => {
     setUserIsSideBarOpen((prev) => !prev);
