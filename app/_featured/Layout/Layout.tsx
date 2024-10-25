@@ -29,6 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     "/gallery",
     "/shop",
     "/suits",
+    "/wishlist",
     "/suits/:id",
     "/cart",
     "/news",
@@ -53,6 +54,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const handleSideBar = () => {
     setIsSideBarOpen((prev) => !prev);
   };
+
+  const a = 0;
 
   return (
     <>
