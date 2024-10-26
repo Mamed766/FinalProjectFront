@@ -7,8 +7,14 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
 
-type SlideType = { src: string; id: number };
+type SlideType = { src: string; id: number; name: string; job: string };
 
 type PropType = {
   slides: SlideType[];
@@ -44,13 +50,39 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map(({ src, id }) => (
-            <div className="embla__slide" key={id}>
-              <img
-                src={src}
-                alt={`Slide ${id}`}
-                className="embla__slide__img"
-              />
+          {slides.map(({ src, job, name, id }) => (
+            <div className="embla__slide group  cursor-grab" key={id}>
+              <div className="relative text-white max-w-[26.3rem]">
+                <img
+                  src={src}
+                  alt={`Slide ${id}`}
+                  className="embla__slide__img relative "
+                />
+                <div className="bg-[#BB9D7B] group-hover:bottom-[0] duration-500 py-5 flex justify-between items-center px-2 absolute bottom-[-10rem] w-full ">
+                  <div>
+                    <h2 className="text-[30px] font-medium hover:text-black duration-500">
+                      {name}
+                    </h2>
+                    <p>{job}</p>
+                  </div>
+                  <div>
+                    <ul className="flex gap-2">
+                      <li className="bg-black p-1 hover:bg-white hover:text-black duration-500">
+                        <FaFacebookF />
+                      </li>
+                      <li className="bg-black p-1 hover:bg-white hover:text-black duration-500">
+                        <FaInstagram />
+                      </li>
+                      <li className="bg-black p-1 hover:bg-white hover:text-black duration-500">
+                        <FaYoutube />
+                      </li>
+                      <li className="bg-black p-1 hover:bg-white hover:text-black duration-500">
+                        <FaLinkedinIn />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

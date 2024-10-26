@@ -15,18 +15,26 @@ const SLIDES = [
   {
     src: "https://darkfashion.wpengine.com/wp-content/uploads/2023/09/team-image-2.webp",
     id: 1,
+    name: "Saara",
+    job: "PERSONAL TRAINER",
   },
   {
     src: "https://darkfashion.wpengine.com/wp-content/uploads/2023/09/team-image-3a.webp",
     id: 2,
+    name: "Kelvin",
+    job: "HEALTH COACH",
   },
   {
     src: "https://darkfashion.wpengine.com/wp-content/uploads/2023/09/team-image-1.webp",
     id: 3,
+    name: "Jack",
+    job: "SPORTS COACH",
   },
   {
     src: "https://darkfashion.wpengine.com/wp-content/uploads/2023/09/team-image-2.webp",
     id: 4,
+    name: "Saara",
+    job: "PERSONAL TRAINER",
   },
 ];
 
@@ -66,7 +74,7 @@ const About = () => {
           <div className="text-white flex flex-col gap-1">
             <div className="flex flex-col ">
               <p className="text-[14px]">TAILORS & DESIGNERS</p>
-              <h2 className="text-[50px] max-w-[400px]">
+              <h2 className="text-[50px] max-w-[450px] font-medium">
                 Our varied fashion business is value-driven
               </h2>
               <p className="text-[16px] max-w-[500px]">
