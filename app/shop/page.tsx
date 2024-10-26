@@ -19,6 +19,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import Link from "next/link";
 
 interface Suit {
   title: string;
@@ -68,11 +69,35 @@ const Shop = () => {
     setShouldFetch(true);
   };
 
+  const search = searchParams.get("search") || "";
   useEffect(() => {
-    const search = searchParams.get("search") || "";
     setSearchQuery(search);
     setShouldFetch(true);
+    setCurrentPage(1);
   }, [searchParams]);
+
+  useEffect(() => {
+    if (shouldFetch) {
+      fetchFilteredData();
+      setShouldFetch(false);
+    }
+  }, [shouldFetch, price, colorFilter, searchQuery, currentPage, sortOrder]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setShouldFetch(true);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (initialFetch && searchQuery !== "") {
+      fetchFilteredData();
+      setInitialFetch(false);
+    }
+  }, [initialFetch]);
+
+  const handleFilterClick = () => {
+    setShouldFetch(true);
+  };
 
   const fetchFilteredData = async () => {
     try {
@@ -107,33 +132,10 @@ const Shop = () => {
     }
   };
 
-  useEffect(() => {
-    if (initialFetch && searchQuery !== "") {
-      fetchFilteredData();
-      setInitialFetch(false);
-    }
-  }, [initialFetch]);
-
-  const handleFilterClick = () => {
-    setShouldFetch(true);
-  };
-
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(e.target.value);
     setShouldFetch(true);
   };
-
-  useEffect(() => {
-    if (shouldFetch) {
-      fetchFilteredData();
-      setShouldFetch(false);
-    }
-  }, [shouldFetch, price, colorFilter, searchQuery, currentPage, sortOrder]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-    setShouldFetch(true);
-  }, [searchQuery, price, colorFilter]);
 
   return (
     <div className="pt-16">
@@ -221,6 +223,21 @@ const Shop = () => {
                   </ListItem>
                 ))}
               </List>
+              <Button
+                onClick={() => {
+                  const scrollY = window.scrollY;
+                  window.location.href = "/shop";
+                  setTimeout(() => {
+                    window.scrollTo(0, scrollY);
+                  }, 0);
+                }}
+                bg="tan"
+                color="white"
+                mt={4}
+                width="20"
+              >
+                All Data
+              </Button>
             </Box>
           </div>
 
