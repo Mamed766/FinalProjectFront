@@ -44,8 +44,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const isSuitRouteWithId =
     pathname.startsWith("/suits/") && pathname.split("/").length === 3;
+  const isNewsRouteWithId =
+    pathname.startsWith("/news/") && pathname.split("/").length === 3;
 
-  const shouldShowLayout = validRoutes.includes(pathname) || isSuitRouteWithId;
+  const shouldShowLayout =
+    validRoutes.includes(pathname) || isSuitRouteWithId || isNewsRouteWithId;
 
   const handleUserSideBar = () => {
     setUserIsSideBarOpen((prev) => !prev);
