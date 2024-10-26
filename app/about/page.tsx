@@ -8,6 +8,7 @@ import Information from "../_components/Information/Information";
 import EmblaCarousel from "./EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import "./embla.css";
+import AboutCards from "../_components/AboutCards/AboutCards";
 
 const OPTIONS: EmblaOptionsType = { dragFree: true };
 const SLIDE_COUNT = 5;
@@ -66,7 +67,7 @@ const About = () => {
       </div>
       <div
         style={sliderStyle}
-        className="py-20 flex justify-center items-center"
+        className="py-20 flex justify-center items-center "
       >
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-80 z-10 w-full h-full"></div>
 
@@ -93,6 +94,9 @@ const About = () => {
 
           <EmblaCarousel slides={SLIDES} options={OPTIONS} />
         </div>
+      </div>
+      <div className="bg-black">
+        <AboutCards />
       </div>
     </div>
   );
