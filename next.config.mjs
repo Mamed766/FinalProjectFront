@@ -4,6 +4,7 @@ const nextConfig = {
     domains: [
       "darkfashion.wpengine.com",
       "http://localhost:3001/",
+      "w3.org",
       "secure.gravatar.com",
       "localhost",
     ],
