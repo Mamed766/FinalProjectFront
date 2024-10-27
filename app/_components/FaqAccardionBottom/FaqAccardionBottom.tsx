@@ -19,7 +19,10 @@ const FaqAccardionBottom = () => {
     <div>
       <div className="flex flex-row-reverse flex-wrap lg:flex-nowrap gap-10">
         <div className="relative  w-full md:w-[35rem] ">
-          <SaleLogo className="absolute bottom-[-2rem] right-[-3rem] z-20" />
+          <SaleLogo
+            number={50}
+            className="absolute bottom-[-2rem] right-[-3rem] z-20"
+          />
           <div className="relative h-[30rem] md:w-[35rem]  md:h-[50rem]  overflow-hidden">
             <Image
               alt=""

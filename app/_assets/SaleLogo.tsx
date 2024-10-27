@@ -2,9 +2,10 @@ import React from "react";
 
 interface SaleLogoProps {
   className?: string;
+  number?: any;
 }
 
-const SaleLogo: React.FC<SaleLogoProps> = ({ className }) => (
+const SaleLogo: React.FC<SaleLogoProps> = ({ className, number }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 500 500"
@@ -29,7 +30,7 @@ const SaleLogo: React.FC<SaleLogoProps> = ({ className }) => (
       dominantBaseline="central"
       className="text-style"
     >
-      60%
+      {number}%
     </text>
     <text
       x="50%"
