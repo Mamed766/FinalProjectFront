@@ -44,7 +44,11 @@ const FaqAccardionBottom = () => {
           </h1>
 
           <Accordion width="100%" maxW="full" mx="auto" allowToggle mt={8}>
-            <AccordionItem border="none" mb={4}>
+            <AccordionItem
+              className="hover:bg-[#BB9D7B] duration-500"
+              border="none"
+              mb={4}
+            >
               <h2>
                 <AccordionButton
                   _expanded={{
@@ -74,7 +78,11 @@ const FaqAccardionBottom = () => {
                 Morbi tempus iaculis urna id volutpat lacus faucibus turpis.
               </AccordionPanel>
             </AccordionItem>
-            <AccordionItem border="none" mb={4}>
+            <AccordionItem
+              className="hover:bg-[#BB9D7B] duration-500"
+              border="none"
+              mb={4}
+            >
               <h2>
                 <AccordionButton
                   _expanded={{
@@ -105,7 +113,11 @@ const FaqAccardionBottom = () => {
                 fringilla.
               </AccordionPanel>
             </AccordionItem>
-            <AccordionItem border="none" mb={4}>
+            <AccordionItem
+              className="hover:bg-[#BB9D7B] duration-500"
+              border="none"
+              mb={4}
+            >
               <h2>
                 <AccordionButton
                   _expanded={{
@@ -136,7 +148,11 @@ const FaqAccardionBottom = () => {
                 amet.
               </AccordionPanel>
             </AccordionItem>
-            <AccordionItem border="none" mb={4}>
+            <AccordionItem
+              className="hover:bg-[#BB9D7B] duration-500"
+              border="none"
+              mb={4}
+            >
               <h2>
                 <AccordionButton
                   _expanded={{
@@ -166,7 +182,11 @@ const FaqAccardionBottom = () => {
                 Morbi tempus iaculis urna id volutpat lacus faucibus turpis.
               </AccordionPanel>
             </AccordionItem>
-            <AccordionItem border="none" mb={4}>
+            <AccordionItem
+              className="hover:bg-[#BB9D7B] duration-500"
+              border="none"
+              mb={4}
+            >
               <h2>
                 <AccordionButton
                   _expanded={{
