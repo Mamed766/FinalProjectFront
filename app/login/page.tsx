@@ -46,7 +46,9 @@ const Login = () => {
 
   return (
     <div>
-      <Breadcrump title="Login" bread1="Home" />
+      <div className="pt-16">
+        <Breadcrump title="Login" bread1="Home" />
+      </div>
       <div>
         <div className="bg-black py-20 flex justify-center">
           <div className="flex flex-col w-[35rem] py-20  px-10 bg-white  ">
