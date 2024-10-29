@@ -22,6 +22,7 @@ export default function PostSuitModal({
     stock?: number;
     size?: number[];
     color?: string;
+    status?: string;
   } | null;
 }) {
   const [imageFile1, setImageFile1] = useState<File | null>(null);
@@ -37,6 +38,7 @@ export default function PostSuitModal({
     stock: suit?.stock || "",
     size: suit?.size || "",
     color: suit?.color || "pink",
+    status: suit?.status || "pending",
   };
 
   const validationSchema = Yup.object({
@@ -48,6 +50,9 @@ export default function PostSuitModal({
     stock: Yup.number().required("Stock is required").min(0),
     size: Yup.number().required("Size is required"),
     color: Yup.string().required("Color is required"),
+    status: Yup.string()
+      .oneOf(["pending", "accepted", "rejected"])
+      .required("Status is required"),
   });
 
   const suitId = suit?._id;
@@ -60,6 +65,7 @@ export default function PostSuitModal({
     formData.append("stock", values.stock);
     formData.append("size", values.size.toString());
     formData.append("color", values.color);
+    formData.append("status", values.status);
 
     if (!imageFile1 || !imageFile2) {
       setImageError("Both images are required");
@@ -207,6 +213,23 @@ export default function PostSuitModal({
               </Field>
               <ErrorMessage
                 name="color"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div>
+
+            <div className="mb-2">
+              <Field
+                as="select"
+                name="status"
+                className="border p-2 rounded w-full"
+              >
+                <option value="pending">Pending</option>
+                <option value="accepted">Accepted</option>
+                <option value="rejected">Rejected</option>
+              </Field>
+              <ErrorMessage
+                name="status"
                 component="div"
                 className="text-red-500 text-sm"
               />

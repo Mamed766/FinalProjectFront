@@ -93,6 +93,9 @@ const Page = () => {
                   Color
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Id
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Action
                 </th>
               </tr>
@@ -128,8 +131,11 @@ const Page = () => {
                       <td className="px-6 py-4"> ${suit?.price} </td>
                       <td className="px-6 py-4"> {suit?.rating} </td>
                       <td className="px-6 py-4"> {suit?.stock} </td>
+
                       <td className="px-6 py-4"> {suit?.size?.join(", ")} </td>
                       <td className="px-6 py-4"> {suit?.color} </td>
+                      <td className="px-6 py-4"> {suit?._id} </td>
+
                       <td className="flex gap-2 py-4">
                         <button
                           onClick={() => handleEdit(suit)}
