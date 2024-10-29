@@ -91,7 +91,7 @@ const Track = () => {
             {suit ? (
               <div className="mt-10">
                 <p className="text-[25px] font-bold">
-                  ID: {suit._id} - Status:{" "}
+                  ID: {suit?._id} - Status:{" "}
                   <span className={`${getStatusColor(suit?.status)}`}>
                     {suit?.status}{" "}
                   </span>

@@ -37,7 +37,7 @@ const Shop = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const searchParams = useSearchParams();
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 6;
   const router = useRouter();
   const [paginationInfo, setPaginationInfo] = useState({
     totalCollections: 0,

@@ -111,6 +111,7 @@ const page = () => {
                           <span className="text-[#BB9D7B]">{item?.title}</span>{" "}
                         </p>
                       )}
+
                       {item?.price && item?.quantity && (
                         <p>
                           Total Price:{" "}
