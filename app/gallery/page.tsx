@@ -80,25 +80,33 @@ const Gallery = () => {
       <div className="bg-black py-20">
         <div className="flex gap-2 text-white justify-center items-center">
           <button
-            className="bg-transparent px-5 py-2 border-[2px] border-[#BB9D7B]"
+            className={`px-5 py-2 hover:bg-[#BB9D7B] duration-700 border-[2px] border-[#BB9D7B] ${
+              filterKey === "*" ? "bg-[#BB9D7B]" : "bg-transparent"
+            }`}
             onClick={() => setFilterKey("*")}
           >
             All
           </button>
           <button
-            className="bg-transparent px-5 py-2 border-[2px] border-[#BB9D7B]"
+            className={`px-5 hover:bg-[#BB9D7B] duration-700 py-2 border-[2px] border-[#BB9D7B] ${
+              filterKey === "blazers" ? "bg-[#BB9D7B]" : "bg-transparent"
+            }`}
             onClick={() => setFilterKey("blazers")}
           >
             Blazers
           </button>
           <button
-            className="bg-transparent px-5 py-2 border-[2px] border-[#BB9D7B]"
+            className={`px-5 py-2 hover:bg-[#BB9D7B] duration-700 border-[2px] border-[#BB9D7B] ${
+              filterKey === "watch" ? "bg-[#BB9D7B]" : "bg-transparent"
+            }`}
             onClick={() => setFilterKey("watch")}
           >
             Watch
           </button>
           <button
-            className="bg-transparent px-5 py-2 border-[2px] border-[#BB9D7B]"
+            className={`px-5 py-2 border-[2px] hover:bg-[#BB9D7B] duration-700 border-[#BB9D7B] ${
+              filterKey === "jewelry" ? "bg-[#BB9D7B]" : "bg-transparent"
+            }`}
             onClick={() => setFilterKey("jewelry")}
           >
             Jewelry
