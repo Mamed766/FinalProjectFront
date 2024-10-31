@@ -11,6 +11,10 @@ import Customer from "./_components/Customer/Customer";
 import Recent from "./_components/Recent/Recent";
 import ServicesHome from "./_components/ServicesHome/ServicesHome";
 import HomeImages from "./_components/HomeImages/HomeImages";
+import { getCookie } from "cookies-next";
+import axios from "axios";
+import { useRecoilState } from "recoil";
+import { cartQuantityState } from "./atoms/CartState";
 const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,6 +22,34 @@ const Home = () => {
     }, 500);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  const [cartQuantity, setCartQuantity] = useRecoilState(cartQuantityState);
+
+  useEffect(() => {
+    const fetchCartQuantity = async () => {
+      try {
+        const token = getCookie("token");
+        const response = await axios.get("http://localhost:3001/api/v2/cart", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
+
+        const items = response.data.items ?? [];
+        const totalQuantity = items.reduce(
+          (total: number, item: any) => total + (item.quantity || 0),
+          0
+        );
+
+        setCartQuantity(totalQuantity);
+      } catch (error) {
+        console.error("Error fetching cart quantity:", error);
+      }
+    };
+
+    fetchCartQuantity();
   }, []);
 
   return (

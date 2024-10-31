@@ -6,6 +6,9 @@ import { getCookie } from "cookies-next";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { loadStripe } from "@stripe/stripe-js";
+import { cartQuantityState } from "../atoms/CartState";
+import { useRecoilState } from "recoil";
+
 const stripePromise = loadStripe(
   "pk_test_51PuCFuLSaZd8Ekq0un2MHJtABxYxwcK6yd8i0ggT9bef7WYOYj8hyVSxCOUuB5AIqmFWicTliSvD8YMofCEIoc2M00uhf93Z8V"
 );
@@ -21,6 +24,7 @@ interface CartItem {
 const page = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [cartQuantity, setCartQuantity] = useRecoilState(cartQuantityState);
 
   const handleCheckout = async () => {
     try {
@@ -64,6 +68,7 @@ const page = () => {
         });
 
         setCartItems(response.data.items ?? []);
+
         console.log("API Response CARD:", response.data);
       } catch (error: any) {
         console.error("cart error:", error.response?.data || error.message);
@@ -88,9 +93,20 @@ const page = () => {
       });
 
       toast.error("item deleted succesfully from card");
-      setCartItems((prevItems) =>
-        prevItems.filter((item) => item.productId !== productId)
-      );
+      setCartItems((prevItems) => {
+        const updatedItems = prevItems.filter(
+          (item) => item.productId !== productId
+        );
+
+        const totalQuantity = updatedItems.reduce(
+          (total, item) => total + (item.quantity || 0),
+          0
+        );
+
+        setCartQuantity(totalQuantity);
+
+        return updatedItems;
+      });
     } catch (error: any) {
       console.error(
         "Error when deleting item:",

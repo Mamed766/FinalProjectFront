@@ -20,6 +20,8 @@ import InterestingStar from "@/app/_assets/InterestingStar";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import ReviewForm from "@/app/_components/Review/Review";
+import { useRecoilState } from "recoil";
+import { cartQuantityState } from "../../atoms/CartState";
 
 const SuitProducts = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -32,6 +34,8 @@ const SuitProducts = () => {
     minutes: 0,
     seconds: 0,
   });
+
+  const [cartQuantity, setCartQuantity] = useRecoilState(cartQuantityState);
 
   const router = useRouter();
 
@@ -104,7 +108,7 @@ const SuitProducts = () => {
       );
 
       setStock((prevStock) => prevStock - quantity);
-
+      setCartQuantity((prevQuantity) => prevQuantity + quantity);
       toast.success("Item added to cart");
     } catch (error: any) {
       console.error(
