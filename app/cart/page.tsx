@@ -5,6 +5,11 @@ import Loading from "../loading";
 import { getCookie } from "cookies-next";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(
+  "pk_test_51PuCFuLSaZd8Ekq0un2MHJtABxYxwcK6yd8i0ggT9bef7WYOYj8hyVSxCOUuB5AIqmFWicTliSvD8YMofCEIoc2M00uhf93Z8V"
+);
+
 interface CartItem {
   productId?: string;
   quantity?: number;
@@ -16,6 +21,34 @@ interface CartItem {
 const page = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const handleCheckout = async () => {
+    try {
+      const token = getCookie("token");
+
+      const response = await axios.post(
+        "http://localhost:3001/api/v2/checkout",
+        { cartItems },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const stripe = await stripePromise;
+
+      if (!stripe) {
+        console.error("Stripe not initial.");
+        toast.error("Stripe not initialed try again");
+        return;
+      }
+
+      const { id: sessionId } = response.data;
+      await stripe.redirectToCheckout({ sessionId });
+    } catch (error) {
+      console.error("Error in checkout", error);
+      toast.error("Checkout failed. Please try again.");
+    }
+  };
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -143,7 +176,10 @@ const page = () => {
             </div>
 
             <div className="flex mt-5 justify-center ">
-              <button className="bg-black p-2  text-white hover:bg-[#BB9D7B] hover:text-white duration-300">
+              <button
+                onClick={handleCheckout}
+                className="bg-black p-2  text-white hover:bg-[#BB9D7B] hover:text-white duration-300"
+              >
                 Checkout
               </button>
             </div>

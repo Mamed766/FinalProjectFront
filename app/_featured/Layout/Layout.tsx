@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import UserSidebar from "../Sidebar/UserSidebar";
 import Sidebar from "../Sidebar/Sidebar";
 import { ChakraProvider } from "@chakra-ui/react";
+import { RecoilRoot } from "recoil";
 
 interface LayoutProps {
   children: ReactNode;
@@ -60,30 +61,32 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      <ChakraProvider>
-        <div className="z-50">
-          <Sidebar
-            isOpen={isSideBarOpen}
-            onClose={() => setIsSideBarOpen(false)}
-          />
-          <UserSidebar
-            isOpen={isUserSideBarOpen}
-            onClose={() => setUserIsSideBarOpen(false)}
-          />
-        </div>
-        <div className="">
-          {shouldShowLayout && (
-            <Header
-              handleSidebar={handleSideBar}
-              handleUserSideBar={handleUserSideBar}
+      <RecoilRoot>
+        <ChakraProvider>
+          <div className="z-50">
+            <Sidebar
+              isOpen={isSideBarOpen}
+              onClose={() => setIsSideBarOpen(false)}
             />
-          )}
+            <UserSidebar
+              isOpen={isUserSideBarOpen}
+              onClose={() => setUserIsSideBarOpen(false)}
+            />
+          </div>
+          <div className="">
+            {shouldShowLayout && (
+              <Header
+                handleSidebar={handleSideBar}
+                handleUserSideBar={handleUserSideBar}
+              />
+            )}
 
-          {children}
+            {children}
 
-          {shouldShowLayout && <Footer />}
-        </div>
-      </ChakraProvider>
+            {shouldShowLayout && <Footer />}
+          </div>
+        </ChakraProvider>
+      </RecoilRoot>
     </>
   );
 };
