@@ -31,7 +31,7 @@ interface Suit {
   _id: any;
 }
 const Shop = () => {
-  const [price, setPrice] = useState<[number, number]>([0, 2000]);
+  const [price, setPrice] = useState<[number, number]>([0, 1100]);
   const [filteredData, setFilteredData] = useState<Suit[]>([]);
   const [colorFilter, setColorFilter] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -52,6 +52,7 @@ const Shop = () => {
 
   const handleSliderChange = (value: [number, number]) => {
     setPrice(value);
+    setCurrentPage(1);
     setShouldFetch(false);
   };
 
@@ -61,6 +62,7 @@ const Shop = () => {
     } else {
       setColorFilter([...colorFilter, color]);
     }
+    setCurrentPage(1);
     setShouldFetch(false);
   };
 
@@ -134,6 +136,7 @@ const Shop = () => {
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(e.target.value);
+    setCurrentPage(1);
     setShouldFetch(true);
   };
 
@@ -176,7 +179,7 @@ const Shop = () => {
               <RangeSlider
                 defaultValue={price}
                 min={0}
-                max={2000}
+                max={1100}
                 step={10}
                 onChange={handleSliderChange}
               >
