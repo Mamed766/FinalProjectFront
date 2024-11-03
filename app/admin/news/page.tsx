@@ -65,7 +65,7 @@ const Page = () => {
           handleSideBar={handleSideBar}
         />
       </div>
-      <div className="px-10 py-20">
+      <div className="px-10 mt-[3rem] py-20">
         <button
           onClick={handleAddNew}
           className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -116,8 +116,17 @@ const Page = () => {
                         />
                       </th>
                       <td className="px-6 py-4">{news?.title}</td>
-                      <td className="px-6 py-4"> {news?.desc1} </td>
-                      <td className="px-6 py-4"> {news?.desc2} </td>
+                      <td className="px-6 py-4">
+                        {news?.createAt.slice(0, 10)}
+                      </td>
+                      <td className="px-6 py-4">
+                        {" "}
+                        {news?.desc1.slice(0, 100)}{" "}
+                      </td>
+                      <td className="px-6 py-4">
+                        {" "}
+                        {news?.desc2.slice(0, 100)}{" "}
+                      </td>
                       <td className="flex gap-2 py-4">
                         <button
                           onClick={() => handleEdit(news)}

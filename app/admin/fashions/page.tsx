@@ -8,6 +8,7 @@ import { useRequest, useRequestMutation } from "@/app/_http/axiosFetcher";
 import PostFashionModal from "../_postFashionModal/PostFashionModal";
 import AdminHeader from "../AdminHeader";
 import { toast } from "react-toastify";
+import AdminSidebar from "../AdminSidebar";
 const Page = () => {
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -19,6 +20,12 @@ const Page = () => {
     method: "GET",
     module: "fashionApi",
   });
+
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const handleSideBar = () => {
+    setIsSideBarOpen((prev) => !prev);
+  };
 
   const handleEdit = (fashion: any) => {
     setEditData(fashion);
@@ -52,9 +59,12 @@ const Page = () => {
   return (
     <>
       <div>
-        <AdminHeader />
+        <AdminHeader
+          isSideBarOpen={isSideBarOpen}
+          handleSideBar={handleSideBar}
+        />
       </div>
-      <div className="px-10 py-20">
+      <div className="px-10 mt-[5rem] py-20">
         <button
           onClick={handleAddNew}
           className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -150,6 +160,7 @@ const Page = () => {
           )}
         </div>
       </div>
+      <AdminSidebar isOpen={isSideBarOpen} onClose={handleSideBar} />
     </>
   );
 };
