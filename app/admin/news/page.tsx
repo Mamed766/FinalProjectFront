@@ -9,11 +9,17 @@ import { useRequest, useRequestMutation } from "@/app/_http/axiosFetcher";
 import AdminHeader from "../AdminHeader";
 import { toast } from "react-toastify";
 import PostNewsModal from "../_postNewsModal/PostNewsModal";
+import AdminSidebar from "../AdminSidebar";
 
 const Page = () => {
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editData, setEditData] = useState(null);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const handleSideBar = () => {
+    setIsSideBarOpen((prev) => !prev);
+  };
 
   const router = useRouter();
 
@@ -54,7 +60,10 @@ const Page = () => {
   return (
     <>
       <div>
-        <AdminHeader />
+        <AdminHeader
+          isSideBarOpen={isSideBarOpen}
+          handleSideBar={handleSideBar}
+        />
       </div>
       <div className="px-10 py-20">
         <button
@@ -145,6 +154,7 @@ const Page = () => {
           )}
         </div>
       </div>
+      <AdminSidebar isOpen={isSideBarOpen} onClose={handleSideBar} />
     </>
   );
 };

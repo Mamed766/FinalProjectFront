@@ -9,6 +9,7 @@ import { useRequest, useRequestMutation } from "@/app/_http/axiosFetcher";
 import AdminHeader from "../AdminHeader";
 import PostSuitModal from "../_postSuitModal/PostSuitModal";
 import { toast } from "react-toastify";
+import AdminSidebar from "../AdminSidebar";
 const Page = () => {
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -20,6 +21,12 @@ const Page = () => {
     method: "GET",
     module: "suitApi",
   });
+
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const handleSideBar = () => {
+    setIsSideBarOpen((prev) => !prev);
+  };
 
   const handleEdit = (suit: any) => {
     setEditData(suit);
@@ -52,8 +59,12 @@ const Page = () => {
 
   return (
     <>
+      <AdminSidebar isOpen={isSideBarOpen} onClose={handleSideBar} />
       <div>
-        <AdminHeader />
+        <AdminHeader
+          isSideBarOpen={isSideBarOpen}
+          handleSideBar={handleSideBar}
+        />
       </div>
       <div className="px-10 py-20">
         <button
